@@ -55,4 +55,4 @@ MVP        11月９日
 Figma：https://www.figma.com/file/EtmYbvxmtWDrTJk0CFVcUH/Vtuber_song_search?type=whiteboard&node-id=0-1&t=GjWY3y4cFgirOL5w-0
 
 ◼️ ER図
-[![Image from Gyazo](https://i.gyazo.com/6e68705c346742ceedc19d0bb9849b4e.png)](https://gyazo.com/6e68705c346742ceedc19d0bb9849b4e)
+[![Image from Gyazo](https://i.gyazo.com/7e46c92b3dfc85a7b7218b8b3d86ea9f.png)](https://gyazo.com/7e46c92b3dfc85a7b7218b8b3d86ea9f)
