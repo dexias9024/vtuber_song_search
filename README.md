@@ -50,3 +50,6 @@ Vtuber専門のアプリの場合知る限りのものは配信情報＋NEWSま�
 機能実装    10月8日〜11月８日
 MVP        11月９日
 本リリース  11月10日
+
+◼️ 画面遷移図
+Figma：https://www.figma.com/file/EtmYbvxmtWDrTJk0CFVcUH/Vtuber_song_search?type=whiteboard&node-id=0-1&t=GjWY3y4cFgirOL5w-0
