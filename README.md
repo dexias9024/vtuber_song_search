@@ -53,3 +53,6 @@ MVP        11月９日
 
 ◼️ 画面遷移図
 Figma：https://www.figma.com/file/EtmYbvxmtWDrTJk0CFVcUH/Vtuber_song_search?type=whiteboard&node-id=0-1&t=GjWY3y4cFgirOL5w-0
+
+◼️ ER図
+[![Image from Gyazo](https://i.gyazo.com/859d8846c1f32ae0f2fbb5aabcb13505.png)](https://gyazo.com/859d8846c1f32ae0f2fbb5aabcb13505)
