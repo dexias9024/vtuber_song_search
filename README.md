@@ -56,3 +56,8 @@ Figma：https://www.figma.com/file/EtmYbvxmtWDrTJk0CFVcUH/Vtuber_song_search?typ
 
 ◼️ ER図
 [![Image from Gyazo](https://i.gyazo.com/859d8846c1f32ae0f2fbb5aabcb13505.png)](https://gyazo.com/859d8846c1f32ae0f2fbb5aabcb13505)
+
+ruby 3.2.2 (2023-03-30 revision e51014f9c0)
+Rails 7.1.0
+node v18.17.1
+Python 3.11.4
