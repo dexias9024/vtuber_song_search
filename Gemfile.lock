@@ -88,6 +88,9 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
       sassc-rails (>= 2.0.0)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -295,7 +298,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.4.4)
+    webpacker (6.0.0.rc.6)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -317,6 +320,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap
+  bootstrap-sass
   capybara
   debug
   importmap-rails
@@ -334,7 +338,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
-  webpacker
+  webpacker (= 6.0.0.rc.6)
 
 RUBY VERSION
    ruby 3.2.2p53
