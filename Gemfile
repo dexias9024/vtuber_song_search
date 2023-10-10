@@ -48,7 +48,6 @@ gem 'ransack'
 gem 'sorcery'
 
 gem 'bootstrap'
-gem 'bootstrap-sass'
 
 gem 'kaminari'
 
