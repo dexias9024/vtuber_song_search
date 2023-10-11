@@ -48,7 +48,6 @@ gem 'ransack'
 gem 'sorcery'
 
 gem 'bootstrap'
-
 gem 'kaminari'
 
 gem 'simple_form'
