@@ -1,0 +1,2 @@
+class Inquery < ApplicationRecord
+end

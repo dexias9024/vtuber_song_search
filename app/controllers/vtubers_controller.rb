@@ -1,0 +1,2 @@
+class VtubersController < ApplicationController
+end
