@@ -1,0 +1,2 @@
+class Vtuber < ApplicationRecord
+end
