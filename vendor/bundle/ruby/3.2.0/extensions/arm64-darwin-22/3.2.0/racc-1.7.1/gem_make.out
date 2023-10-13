@@ -1,0 +1,20 @@
+current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+/Users/hosinomakitaka/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231013-1979-n7zt57 sitelibdir\=./.gem.20231013-1979-n7zt57 clean
+
+current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231013-1979-n7zt57 sitelibdir\=./.gem.20231013-1979-n7zt57
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231013-1979-n7zt57 sitelibdir\=./.gem.20231013-1979-n7zt57 install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20231013-1979-n7zt57/racc
+
+current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231013-1979-n7zt57 sitelibdir\=./.gem.20231013-1979-n7zt57 clean
