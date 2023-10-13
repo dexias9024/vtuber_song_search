@@ -1,0 +1,2 @@
+module InquerysHelper
+end
