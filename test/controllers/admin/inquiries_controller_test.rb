@@ -1,6 +1,6 @@
 require "test_helper"
 
-class InqueryTest < ActiveSupport::TestCase
+class Admin::InquiriesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
