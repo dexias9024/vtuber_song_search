@@ -1,0 +1,2 @@
+class UserRequestsController < ApplicationController
+end

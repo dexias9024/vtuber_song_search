@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_13_084001) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_15_054703) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.text "content", null: false
-    t.bigint "song_id"
-    t.bigint "user_id"
+    t.bigint "song_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["song_id"], name: "index_comments_on_song_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "inqueries", force: :cascade do |t|
+  create_table "inquerys", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.text "content", null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_13_084001) do
     t.integer "cover", null: false
     t.string "name"
     t.string "artist_name"
-    t.bigint "vtuber_id"
+    t.bigint "vtuber_id", null: false
     t.string "video_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_13_084001) do
   end
 
   create_table "user_requests", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.integer "channnel_status", null: false
     t.string "name", null: false
     t.string "url", null: false
@@ -82,14 +82,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_13_084001) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.string "crypto_password", null: false
     t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "icon"
     t.text "profile"
-    t.integer "role", limit: 2, default: 0, null: false
+    t.integer "role", default: 0, null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
   end
 
@@ -106,12 +110,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_13_084001) do
     t.string "channel_url", null: false
     t.string "name"
     t.string "icon"
-    t.bigint "user_id"
+    t.bigint "member_id", null: false
     t.text "overview"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_name", "name"], name: "index_vtubers_on_channel_name_and_name"
-    t.index ["user_id"], name: "index_vtubers_on_user_id"
+    t.index ["member_id"], name: "index_vtubers_on_member_id"
   end
 
   add_foreign_key "comments", "songs"
@@ -124,5 +128,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_13_084001) do
   add_foreign_key "user_requests", "users"
   add_foreign_key "vtuber_instruments", "instruments"
   add_foreign_key "vtuber_instruments", "vtubers"
-  add_foreign_key "vtubers", "users"
+  add_foreign_key "vtubers", "members"
 end

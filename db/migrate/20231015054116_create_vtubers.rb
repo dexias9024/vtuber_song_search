@@ -5,7 +5,7 @@ class CreateVtubers < ActiveRecord::Migration[7.1]
       t.string :channel_url, null: false
       t.string :name
       t.string :icon
-      t.references :user, foreign_key: true
+      t.references :member, null: false, foreign_key: true
       t.text :overview
 
       t.timestamps
