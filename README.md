@@ -59,5 +59,5 @@ Figma：https://www.figma.com/file/EtmYbvxmtWDrTJk0CFVcUH/Vtuber_song_search?typ
 
 ruby 3.2.2 (2023-03-30 revision e51014f9c0)
 Rails 7.1.0
-node v18.17.1
+node v16.16.0
 Python 3.11.4
