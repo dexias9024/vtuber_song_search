@@ -1,0 +1,27 @@
+.footer {
+  background-color: #696b7d;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer .container a{
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-link {
+  flex: 1;
+}
+
+.right-links{
+  margin-left: 15px;
+}
+
+.right-setting{
+  float: right;
+}
+
+.app-title {
+  font-family: 'Noto Serif JP', serif;
+}

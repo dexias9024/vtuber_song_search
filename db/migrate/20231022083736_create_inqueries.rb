@@ -1,6 +1,6 @@
-class CreateInquiries < ActiveRecord::Migration[7.1]
+class CreateInqueries < ActiveRecord::Migration[7.1]
   def change
-    create_table :inquiries do |t|
+    create_table :inqueries do |t|
       t.string :name, null: false
       t.string :email, null: false
       t.text :content, null: false

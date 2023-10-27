@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar-expand-lg navbar-dark bg-info py-4">
+    <div class="row">
+      <div class="col-md-9 offset-lg-1 ">
+        <div class="text-start fw-bold font-monospace">
+          <h1 class="app-title">VtuberSongSearch</h1>
+        </div>
+      </div>
+      <div class="col right-setting ">
+        <% if logged_in? %>
+          <%= button_to "ログアウト", logout_path, method: :delete, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "ログイン", login_path, class: "btn btn-primary" %>
+          <%= link_to 'ユーザー登録', new_user_path %>
+        <% end %>           
+      </div>
+    </div>
+  </nav>
+</header>
