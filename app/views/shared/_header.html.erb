@@ -8,10 +8,10 @@
       </div>
       <div class="col right-setting ">
         <% if logged_in? %>
-          <%= button_to "ログアウト", logout_path, method: :delete, class: "btn btn-primary" %>
+          <%= button_to t('defaults.logout'), logout_path, method: :delete, class: "btn btn-primary" %>
         <% else %>
-          <%= link_to "ログイン", login_path, class: "btn btn-primary" %>
-          <%= link_to 'ユーザー登録', new_user_path %>
+          <%= link_to t('defaults.login'), login_path, class: "btn btn-primary" %>
+          <%= link_to t('header.user_register'), new_user_path %>
         <% end %>           
       </div>
     </div>
