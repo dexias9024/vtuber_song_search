@@ -3,29 +3,22 @@ require 'rails_helper'
 RSpec.describe "UserSessions", type: :system do
   describe 'ユーザーログイン' do
     it '1-1.ユーザーのログインができる' do
-      # テストデータの用意
       user = FactoryBot.create(:user)
 
-      # 確認対象の画面に移動
       visit '/login'
 
-      # labelの存在確認
       expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
 
-      # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
-      # ログイン用ボタンの存在確認
       expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
 
-      # ユーザーログイン処理
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'password'
       click_button 'ログイン'
 
-      # 処理結果の確認
       expect(page).to have_content('ログインしました'), 'ログイン処理が正しく行えるかを確認してください'
       expect(page).to have_button('ログアウト'), 'ログアウトのボタンが表示されていることを確認してください'
     end

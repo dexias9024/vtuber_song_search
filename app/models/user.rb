@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  has_many :requests, dependent: :destroy
+  mount_uploader :icon, IconUploader
+
+  has_many :user_requests, dependent: :destroy
   has_many :user_favorites, dependent: :destroy
   has_many :songs, through: :user_favorites
   has_many :comments, dependent: :destroy

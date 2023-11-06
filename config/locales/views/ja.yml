@@ -3,7 +3,14 @@ ja:
     login: 'ログイン'
     register: '登録'
     logout: 'ログアウト'
-    login: '管理者ログイン'
+    show: '詳細'
+    edit: '編集'
+    delete: '削除'
+
+    message:
+      require_login: 'ログインが必要です'
+      delete_confirm: '本当に削除しますか？'
+      logout_confirm: '本当にログアウトしますか？'
   header:
     user_register: 'ユーザー登録'
   footer:
@@ -30,4 +37,17 @@ ja:
       title: 'お気に入り一覧'
 
   admin:
-    login: '管理者ログイン'
+    user_sessions:
+      create:
+        success: "ログインに成功しました。"
+        fail: "ログインに失敗しました。"
+      destroy:
+        success: "ログアウトしました。"
+    users:
+      update:
+        success: "ユーザー情報が正常に更新されました。"
+        fail: 'ユーザー情報の更新に失敗しました。'
+      destroy:
+        success: 'ユーザーを削除しました。'
+      edit:
+        title: 'ユーザー編集'

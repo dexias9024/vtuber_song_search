@@ -12,16 +12,16 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_users_path, success: 'User was successfully updated.'
+      redirect_to admin_users_path, success: t('.success')
     else
-      flash.now[:danger] = 'User update failed.'
-      render :edit
+      flash.now[:danger] = t('.fail')
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @user.destroy!
-    redirect_to admin_users_path, success: 'ユーザーを削除しました。'
+    redirect_to admin_users_path, success: t('.success')
   end
 
   private
@@ -31,7 +31,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :icon, :profile, :role)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :icon, :icon_cache, :profile, :role)
   end
 
   def check_owner

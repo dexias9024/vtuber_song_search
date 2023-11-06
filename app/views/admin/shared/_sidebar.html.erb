@@ -1,10 +1,10 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
-    <%= image_tag 'favicon.ico', class: 'brand-image img-circle elevation-3' %>
+  <%= link_to admin_root_path, class: 'brand-link' do %>
+    <%= image_tag current_user.icon.url, class: 'brand-image img-circle elevation-3' %>
     <span class="brand-text font-weight-light">AdminLTE 3</span>
-  </a>
+  <% end %>
 
   <!-- Sidebar -->
   <div class="sidebar">
@@ -28,7 +28,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to '#', class: "nav-link" do %>
+          <%= link_to admin_users_path, class: "nav-link" do %>
             <i class="nav-icon far fa-user"></i>
             <p>
               ユーザー

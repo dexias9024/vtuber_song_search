@@ -7,10 +7,10 @@ RSpec.describe "Users", type: :system do
     it '1-1.ユーザーの新規作成ができる' do
       visit 'users/new'
 
-      expect(page).to have_selector('label', text: 'Name'), 'Name というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Password confirmation'), 'Password confirmation というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '名前'), '名前 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'メールアドレス'), 'メールアドレス というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'パスワード'), 'パスワード というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'パスワード確認'), 'パスワード確認 というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='user_name']"), 'Name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -20,10 +20,10 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_button('登録'), 'ユーザー作成用のボタンが表示されていることを確認してください'
 
       expect {
-        fill_in 'Name', with: 'test01'
-        fill_in 'Email', with: 'test01@example.com'
-        fill_in 'Password', with: 'password'
-        fill_in 'Password confirmation', with: 'password'
+        fill_in '名前', with: 'test01'
+        fill_in 'メールアドレス', with: 'test01@example.com'
+        fill_in 'パスワード', with: 'password'
+        fill_in 'パスワード確認', with: 'password'
         click_on '登録'
       }.to change { User.count }.by(1)
       expect(page).to have_button('ログイン'), 'ログインのボタンが表示されていることを確認してください'
@@ -34,10 +34,10 @@ RSpec.describe "Users", type: :system do
 
       visit 'users/new'
 
-      expect(page).to have_selector('label', text: 'Name'), 'Name というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Password confirmation'), 'Password confirmation というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '名前'), '名前 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'メールアドレス'), 'メールアドレス というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'パスワード'), 'パスワード というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'パスワード確認'), 'パスワード確認 というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='user_name']"), 'Name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -47,10 +47,10 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_button('登録'), 'ユーザー作成用のボタンが表示されていることを確認してください'
 
       expect {
-        fill_in 'Name', with: 'test01'
-        fill_in 'Email', with: user.email
-        fill_in 'Password', with: 'password'
-        fill_in 'Password confirmation', with: 'password'
+        fill_in '名前', with: 'test01'
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: 'password'
+        fill_in 'パスワード確認', with: 'password'
         click_on '登録'
       }.to change { User.count }.by(0)
     end
@@ -58,10 +58,10 @@ RSpec.describe "Users", type: :system do
     it '1-3.入力項目が不足している場合に新規作成ができない' do
       visit 'users/new'
 
-      expect(page).to have_selector('label', text: 'Name'), 'Name というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Password confirmation'), 'Password confirmation というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '名前'), '名前 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'メールアドレス'), 'メールアドレス というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'パスワード'), 'パスワード というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'パスワード確認'), 'パスワード確認 というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='user_name']"), 'Name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -71,10 +71,10 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_button('登録'), 'ユーザー作成用のボタンが表示されていることを確認してください'
 
       expect {
-        fill_in 'Name', with: nil
-        fill_in 'Email', with: nil
-        fill_in 'Password', with: nil
-        fill_in 'Password confirmation', with: nil
+        fill_in '名前', with: nil
+        fill_in 'メールアドレス', with: nil
+        fill_in 'パスワード', with: nil
+        fill_in 'パスワード確認', with: nil
         click_on '登録'
       }.to change { User.count }.by(0)
     end

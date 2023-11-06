@@ -11,8 +11,8 @@ class UsersController < ApplicationController
       flash[:success] = "ユーザーが作成されました。"
       redirect_to login_path
     else
-      flash[:error] = "ユーザーの作成に失敗しました。"
-      redirect_to new_user_path
+      flash[:danger] = @user.errors.full_messages
+      redirect_to action: :new
     end
   end
 
