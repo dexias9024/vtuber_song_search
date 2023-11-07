@@ -85,11 +85,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_083916) do
     t.string "email", null: false
     t.string "crypted_password", null: false
     t.string "salt"
-    t.string "icon"
     t.text "profile"
     t.integer "role", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "icon"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["role"], name: "index_users_on_role"
   end

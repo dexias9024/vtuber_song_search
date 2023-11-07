@@ -1,0 +1,61 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    show: '詳細'
+    edit: '編集'
+    delete: '削除'
+    user_register: 'ユーザー登録'
+
+    message:
+      require_login: 'ログインが必要です'
+      delete_confirm: '本当に削除しますか？'
+      logout_confirm: '本当にログアウトしますか？'
+
+  footer:
+    request: 'Vtuber・曲リクエスト'
+    about: 'このアプリについて'
+    terms: '利用規約'
+    privacy_policy: 'プライバシーポリシー'
+    inquery: 'お問合せ'
+  users:
+    profile: 'プロフィール'
+    icon: 'アイコン'
+    name: '名前'
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    edit:
+      title: 'ユーザー編集'
+    update:
+        success: "ユーザー情報が正常に更新されました。"
+        fail: 'ユーザー情報の更新に失敗しました。'
+
+  user_sessions:
+    new:
+      title: 'ログイン'
+      guest_login: 'ゲストログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+  songs:
+    index:
+      title: '曲一覧'
+    user_favorites:
+      title: 'お気に入り一覧'
+
+  admin:
+    user_sessions:
+      create:
+        success: "ログインに成功しました。"
+        fail: "ログインに失敗しました。"
+      destroy:
+        success: "ログアウトしました。"
+    users:
+      update:
+        success: "ユーザー情報が正常に更新されました。"
+        fail: 'ユーザー情報の更新に失敗しました。'
+      destroy:
+        success: 'ユーザーを削除しました。'
+      edit:
+        title: 'ユーザー編集'

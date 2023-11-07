@@ -10,19 +10,19 @@ RSpec.describe 'User', type: :system do
     it '1-2.nameがない場合、無効である' do
       user = FactoryBot.build(:user, name: nil)
       user.valid?
-      expect(user.errors[:name]).to include("can't be blank")
+      expect(user.errors[:name]).to include("を入力してください")
     end
 
     it '1-3.emailがない場合、無効である' do
       user = FactoryBot.build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      expect(user.errors[:email]).to include("を入力してください")
     end
 
     it '1-4.passwordがない場合、無効である' do
       user = FactoryBot.build(:user, password: nil)
       user.valid?
-      expect(user.errors[:password]).to include("can't be blank")
+      expect(user.errors[:password]).to include("を入力してください")
     end
 
     it '1-5.passwordとpassword_confirmationが異なる場合、無効である' do
@@ -32,7 +32,7 @@ RSpec.describe 'User', type: :system do
                        password_confirmation: 'pass'
                        )
       user.valid?
-      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+      expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません")
     end
 
     it "1-6.重複したメールアドレスの場合、無効である" do
@@ -43,7 +43,19 @@ RSpec.describe 'User', type: :system do
                        password_confirmation: 'password'
                        )
       user2.valid?
-      expect(user2.errors[:email]).to include("has already been taken")
+      expect(user2.errors[:email]).to include("はすでに存在します")
+    end
+
+    it '1-7.nameの値が50文字以上の場合、無効である' do
+      user = FactoryBot.build(:user, name: 'a' * 51)
+      user.valid?
+      expect(user.errors[:name]).to include("は50文字以内で入力してください")
+    end
+
+    it '1-8.emailの値が100文字以上の場合、無効である' do
+      user = FactoryBot.build(:user, email: 'a' * 101 + '@example.com')
+      user.valid?
+      expect(user.errors[:email]).to include("は100文字以内で入力してください")
     end
   end
 end

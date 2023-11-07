@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      song: '曲'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        name: '名前'
+        profile: 'プロフィール'
+        icon: 'アイコン'
+        role: '役職'

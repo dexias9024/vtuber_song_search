@@ -8,13 +8,13 @@ class UserSessionsController < ApplicationController
     if @user&.admin?
       logout
       flash.now[:danger] = "ログインに失敗しました."
-      redirect_to login_path
+      render :new, status: :unprocessable_entity
     elsif @user
       flash[:success] = "ログインしました。"
       redirect_to songs_path
     else
       flash.now[:danger] = "ログインに失敗しました."
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

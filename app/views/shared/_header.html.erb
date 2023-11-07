@@ -1,18 +1,23 @@
 <header>
-  <nav class="navbar-expand-lg navbar-dark bg-info py-4">
-    <div class="row">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info py-4">
+    <div class="container px-lg-5">
       <div class="col-md-9 offset-lg-1 ">
         <div class="text-start fw-bold font-monospace">
-          <h1 class="app-title">VtuberSongSearch</h1>
+          <%= link_to "VtuberSongSearch", songs_path, class: "navbar-brand" %>
         </div>
       </div>
-      <div class="col right-setting ">
-        <% if logged_in? %>
-          <%= button_to "ログアウト", logout_path, method: :delete, class: "btn btn-primary" %>
-        <% else %>
-          <%= link_to "ログイン", login_path, class: "btn btn-primary" %>
-          <%= link_to 'ユーザー登録', new_user_path %>
-        <% end %>           
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <% if logged_in? %>
+            <li class="nav-item"><%= button_to t('defaults.logout'), logout_path, method: :delete, class: "nav-link active" %></li>
+            <li class="nav-item"><%= link_to t('defaults.show'), user_path(current_user), class: "nav-link active" %></li>#後に実装するビューファイルのテストのためにつけたもので後で消します
+            <li class="nav-item"><%= link_to t('defaults.edit'), edit_user_path(current_user), class: "nav-link active" %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to t('defaults.login'), login_path, class: "nav-link active" %></li>
+            <li class="nav-item"><%= link_to t('defaults.user_register'), new_user_path, class: "nav-link active" %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </nav>

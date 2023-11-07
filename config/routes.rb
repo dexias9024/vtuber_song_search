@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root to: 'dashboards#index'
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    delete 'logout', to: 'user_sessions#destroy'
+    resources :users, only: %i[index show edit update destroy]
+  end
+
   root 'guide#about'
-  resources :users do
+  resources :users, only: %i[new create show edit update] do
     resources :user_favorites
   end
   get '/login', to: 'user_sessions#new'
