@@ -45,5 +45,17 @@ RSpec.describe 'User', type: :system do
       user2.valid?
       expect(user2.errors[:email]).to include("はすでに存在します")
     end
+
+    it '1-7.nameの値が50文字以上の場合、無効である' do
+      user = FactoryBot.build(:user, name: 'a' * 51)
+      user.valid?
+      expect(user.errors[:name]).to include("は50文字以内で入力してください")
+    end
+
+    it '1-8.emailの値が100文字以上の場合、無効である' do
+      user = FactoryBot.build(:user, email: 'a' * 101 + '@example.com')
+      user.valid?
+      expect(user.errors[:email]).to include("は100文字以内で入力してください")
+    end
   end
 end
