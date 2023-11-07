@@ -27,6 +27,7 @@ RSpec.describe "Users", type: :system do
         click_on '登録'
       }.to change { User.count }.by(1)
       expect(page).to have_button('ログイン'), 'ログインのボタンが表示されていることを確認してください'
+      
     end
 
     it '1-2.同じメールアドレスのユーザーは新規作成できない' do
@@ -79,4 +80,52 @@ RSpec.describe "Users", type: :system do
       }.to change { User.count }.by(0)
     end
   end
+
+  describe 'ユーザー編集' do
+    before do
+      user = FactoryBot.create(:user)
+
+      visit '/login'
+
+      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
+
+      expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+
+      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: 'password'
+      click_button 'ログイン'
+    end
+
+    it '2-1.ログインしているユーザー情報の編集ができる' do
+      expect(page).to have_link('編集'), '投稿編集用のボタンが表示されていることを確認してください'
+
+      click_on '編集'
+
+      expect(page).to have_selector('label', text: 'メールアドレス'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '名前'), 'Name というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'アイコン'), 'Icon というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'プロフィール'), 'profile というラベルが表示されていることを確認してください'
+
+      expect(page).to have_css("label[for='user_email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='user_name']"), 'Name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='user_icon']"), 'Icon というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='user_profile']"), 'profile というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+
+      expect(page).to have_button('更新'), '更新用のボタンが表示されていることを確認してください'
+
+      fill_in 'メールアドレス', with: 'user_edited@example.com'
+      fill_in '名前', with: 'name_edited'
+      file_path = Rails.root.join('spec', 'fixtures', 'test_human.jpg')
+      attach_file('アイコン', file_path)
+      fill_in 'プロフィール', with: 'Change Profile'
+
+      click_button '更新'
+
+      expect(page).to have_text('ユーザー情報が正常に更新されました。'), 'ユーザー情報を更新したメッセージが表示されていることを確認してください'
+    end
+  end 
 end

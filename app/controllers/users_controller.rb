@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
+  before_action :set_user, only: %i[show]
   
   def new
     @user = User.new
@@ -16,9 +17,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def show; end
+
+  def edit; end
+
+  def update
+    if current_user.update(user_params)
+      redirect_to songs_path, success: t('.success')
+    else
+      flash.now[:danger] = t('.fail')
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :icon, :profile)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end

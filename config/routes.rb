@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   root 'guide#about'
-  resources :users, only: %i[new create] do
+  resources :users, only: %i[new create show edit update] do
     resources :user_favorites
   end
   get '/login', to: 'user_sessions#new'

@@ -6,13 +6,13 @@ ja:
     show: '詳細'
     edit: '編集'
     delete: '削除'
+    user_register: 'ユーザー登録'
 
     message:
       require_login: 'ログインが必要です'
       delete_confirm: '本当に削除しますか？'
       logout_confirm: '本当にログアウトしますか？'
-  header:
-    user_register: 'ユーザー登録'
+
   footer:
     request: 'Vtuber・曲リクエスト'
     about: 'このアプリについて'
@@ -20,10 +20,18 @@ ja:
     privacy_policy: 'プライバシーポリシー'
     inquery: 'お問合せ'
   users:
+    profile: 'プロフィール'
+    icon: 'アイコン'
+    name: '名前'
     new:
       title: 'ユーザー登録'
       to_login_page: 'ログインページへ'
-      profile: 'プロフィール'
+    edit:
+      title: 'ユーザー編集'
+    update:
+        success: "ユーザー情報が正常に更新されました。"
+        fail: 'ユーザー情報の更新に失敗しました。'
+
   user_sessions:
     new:
       title: 'ログイン'

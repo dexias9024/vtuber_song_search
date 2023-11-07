@@ -15,4 +15,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, length: { maximum: 100 }
   validates :password, presence: true, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :role, presence: true
+  validates :profile, length: { maximum: 500 }
 end

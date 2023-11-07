@@ -24,6 +24,10 @@
                         size: '100x100' %>
         </div>
         <div class="form-group">
+          <%= f.label :profile %>
+          <%= f.text_area :profile, class: 'form-control', rows: 5, cols: 40 %>
+        </div>
+        <div class="form-group">
           <%= f.label :role %>
           <%= f.select :role, User.roles.transform_values { |value| User.roles.keys[value] }, {}, class: 'form-control' %>
         </div>

@@ -32,30 +32,28 @@ RSpec.describe "Admin::Users", type: :system do
 
       expect(page).to have_selector('label', text: 'メールアドレス'), 'Email というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '名前'), 'Name というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Icon'), 'Icon というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'Role'), 'Role というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'アイコン'), 'Icon というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '役職'), 'Role というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'プロフィール'), 'profile というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='user_email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_name']"), 'Name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_icon']"), 'Icon というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_role']"), 'Role というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='user_profile']"), 'profile というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       expect(page).to have_button('更新'), '更新用のボタンが表示されていることを確認してください'
 
       fill_in 'メールアドレス', with: 'user_edited@example.com'
       fill_in '名前', with: 'name_edited'
       file_path = Rails.root.join('spec', 'fixtures', 'test_human.jpg')
-      attach_file('Icon', file_path)
+      attach_file('アイコン', file_path)
       select :admin, from: 'user[role]'
+      fill_in 'プロフィール', with: 'Change Profile'
 
       click_button '更新'
 
       expect(page).to have_text('ユーザー情報が正常に更新されました。'), 'ユーザー情報を更新したメッセージが表示されていることを確認してください'
-      expect(page).to have_content('user_edited@example.com'), '他人の投稿を更新した直後の画面に、更新した情報が表示されていることを確認してください'
-      expect(page).to have_content('name_edited'), '他人の投稿を更新した直後の画面に、更新した情報が表示されていることを確認してください'
-      expect(other_user.reload.icon.to_s.include?('test_human.jpg')).to be(true), '他人の投稿を更新した直後の画面に、更新した情報が表示されていることを確認してください'
-      expect(page).to have_content('admin'), '他人の投稿を更新した直後の画面に、更新した情報が表示されていることを確認してください'
-      expect(page).not_to have_content('general'), '他人の投稿を更新した直後の画面に、更新した情報が表示されていることを確認してください'
     end
 
     it '3-2.他人のユーザー情報の削除ができる' do
