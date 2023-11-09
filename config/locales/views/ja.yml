@@ -12,6 +12,8 @@ ja:
       require_login: 'ログインが必要です'
       delete_confirm: '本当に削除しますか？'
       logout_confirm: '本当にログアウトしますか？'
+      not_authorized: '権限がありません'
+
 
   footer:
     request: 'Vtuber・曲リクエスト'
