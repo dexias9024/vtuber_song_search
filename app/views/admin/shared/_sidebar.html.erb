@@ -20,19 +20,45 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <%= link_to '#', class: "nav-link" do %>
-            <i class="nav-icon far fa-file"></i>
-            <p>
-              曲
-            </p>
+          <%= link_to admin_users_path, class: "nav-link" do %>
+            <i class="nav-icon far fa-user"></i>
+            <%= t('admin.sidebar.user') %>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to admin_users_path, class: "nav-link" do %>
-            <i class="nav-icon far fa-user"></i>
-            <p>
-              ユーザー
-            </p>
+          <%= link_to admin_vtubers_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-microphone"></i>
+            <%= t('admin.sidebar.vtuber') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link" do %>
+            <i class="nav-icon fas fa-music"></i>
+            <%= t('admin.sidebar.song') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_admin_member_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-building"></i>
+            <%= t('admin.sidebar.member') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_admin_instrument_path, class: "nav-link" do %>
+            <i class="nav-icon fas fa-guitar"></i>
+            <%= t('admin.sidebar.instrument') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link" do %>
+            <i class="nav-icon far fa-comments"></i>
+            <%= t('admin.sidebar.comment') %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link" do %>
+            <i class="nav-icon far fa-envelope"></i>
+            <%= t('admin.sidebar.inquiry') %>
           <% end %>
         </li>
       </ul>

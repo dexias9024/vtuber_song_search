@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_22_083916) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_10_125519) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,8 +111,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_083916) do
     t.text "overview"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "member_id", null: false
     t.index ["channel_name", "name"], name: "index_vtubers_on_channel_name_and_name"
     t.index ["instrument_id"], name: "index_vtubers_on_instrument_id"
+    t.index ["member_id"], name: "index_vtubers_on_member_id"
   end
 
   add_foreign_key "comments", "songs"
@@ -126,4 +128,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_22_083916) do
   add_foreign_key "vtuber_instruments", "instruments"
   add_foreign_key "vtuber_instruments", "vtubers"
   add_foreign_key "vtubers", "instruments"
+  add_foreign_key "vtubers", "members"
 end

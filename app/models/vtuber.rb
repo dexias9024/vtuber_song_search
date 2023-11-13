@@ -6,6 +6,6 @@ class Vtuber < ApplicationRecord
   has_many :vtuber_instruments, dependent: :destroy
   has_many :instruments, through: :vtuber_instruments
 
-  validates :channel_name, presence: true
-  validates :channel_url, presence: true
+  validates :channel_name, presence: true, uniqueness: true
+  validates :channel_url, presence: true, uniqueness: true
 end

@@ -1,0 +1,25 @@
+<tr>
+  <td>
+    <%= vtuber.id %>
+  </td>
+  <td>
+    <%= vtuber.channel_name %>
+  </td>
+  <td>
+    <%= vtuber.channel_url %>
+  </td>
+  <td>
+    <%= vtuber.name %>
+  </td>
+  <td>
+    <%= image_tag vtuber.icon.url, class: 'brand-image img-circle elevation-3', style: 'width: 50px; height: 50px;' %>
+  </td>
+  <td>
+    <%= l vtuber.created_at, format: :long %>
+  </td>
+  <td class="d-flex">
+    <%= link_to t('defaults.show'), admin_vtuber_path(vtuber), class: 'btn btn-info' %>
+    <%= link_to t('defaults.edit'), edit_admin_vtuber_path(vtuber), class: 'btn btn-success' %>
+    <%= button_to t('defaults.delete'), admin_vtuber_path(vtuber), method: :delete, data: { turbo_confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+  </td>
+</tr>
