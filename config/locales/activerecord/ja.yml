@@ -12,3 +12,62 @@ ja:
         profile: 'プロフィール'
         icon: 'アイコン'
         role: '役職'
+      vtuber:
+        channel_name: 'チャンネル名'
+        channel_url: 'URL'
+        name: '名前'
+        icon: 'アイコン'
+        overview: '概要'
+        member: '所属'
+        instrument_id: '楽器'
+        not_instrument: '演奏できる楽器はありません。'
+        instruments_list: '楽器一覧'
+        created_at: '作成時期'
+      instrument:
+        name: '名前'
+      member:
+        name: '名前'
+  users:
+    update:
+      success: "ユーザー情報が正常に更新されました。"
+      fail: 'ユーザー情報の更新に失敗しました。'
+    create:
+      success: 'ユーザーが作成されました。'
+      fail: 'ユーザーの作成に失敗しました。'
+  user_sessions:
+      create:
+        success: "ログインに成功しました。"
+        fail: "ログインに失敗しました。"
+      destroy:
+        success: "ログアウトしました。"
+  admin:
+    users:
+      update:
+        success: "ユーザー情報が正常に更新されました。"
+        fail: 'ユーザー情報の更新に失敗しました。'
+      destroy:
+        success: 'ユーザーを削除しました。'
+    user_sessions:
+      create:
+        success: "ログインに成功しました。"
+        fail: "ログインに失敗しました。"
+      destroy:
+        success: "ログアウトしました。"
+    vtubers:
+      create:
+        success: 'Vtuber情報が作成されました。'
+        fail: 'Vtuber情報の作成に失敗しました。'
+      update:
+        success: 'Vtuber情報を更新しました。'
+        fail: 'Vtuber情報の更新に失敗しました。'
+      destroy:
+        success: 'Vtuber情報を削除しました。'
+    instruments:
+      create:
+        success: '楽器を作成しました。'
+        fail: '楽器の作成に失敗しました。'
+    members:
+      create:
+        success: '所属を作成しました。'
+        fill: '所属の作成に失敗しました。'
+        

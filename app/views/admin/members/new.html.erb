@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <%= form_with model: @member, url: admin_members_path, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

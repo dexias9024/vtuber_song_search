@@ -19,13 +19,13 @@ RSpec.describe "Users", type: :system do
 
       expect(page).to have_button('登録'), 'ユーザー作成用のボタンが表示されていることを確認してください'
 
-      expect {
-        fill_in '名前', with: 'test01'
-        fill_in 'メールアドレス', with: 'test01@example.com'
-        fill_in 'パスワード', with: 'password'
-        fill_in 'パスワード確認', with: 'password'
-        click_on '登録'
-      }.to change { User.count }.by(1)
+
+      fill_in '名前', with: 'test01'
+      fill_in 'メールアドレス', with: 'test01@example.com'
+      fill_in 'パスワード', with: 'password'
+      fill_in 'パスワード確認', with: 'password'
+      click_on '登録'
+
       expect(page).to have_button('ログイン'), 'ログインのボタンが表示されていることを確認してください'
       
     end

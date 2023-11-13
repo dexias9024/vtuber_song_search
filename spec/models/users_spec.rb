@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User', type: :system do
+RSpec.describe 'User', type: :model do
   context "Userを作ることができる" do
     it "1-1.name, email, password, password_confirmationがある場合、有効である" do
       user = FactoryBot.build(:user)

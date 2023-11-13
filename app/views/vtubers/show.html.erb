@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="mt-3">
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+        <table class="table table-bordered bg-white">
+          <tr>
+            <th scope="row"><%= t('.channel_name') %></th>
+            <td><%= @vtuber.channel_name %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= t('.channel_url') %></th>
+            <td><%= link_to @vtuber.channel_url, @vtuber.channel_url %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= t('.name') %></th>
+            <td><%= @vtuber.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <%= t('.icon') %>
+            </th>
+            <td>
+              <div class='mt-3 mb-3'>
+              <%= image_tag @vtuber.icon.url,
+                            class: 'rounded-circle',
+                            id: 'preview',
+                            size: '100x100' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><%= t('.overview') %></th>
+            <td><%= @vtuber.overview %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= t('.member') %></th>
+            <td><%= @vtuber.member.name %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= t('.instrument') %></th>
+            <td>
+              <% if @vtuber.instrument_id.present? %>
+                <%= @vtuber.instrument.name %>
+              <% else %>
+                <%= t('.not_instrument') %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
