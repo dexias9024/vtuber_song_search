@@ -11,7 +11,7 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <% if logged_in? %>
             <li class="nav-item"><%= button_to t('defaults.logout'), logout_path, method: :delete, class: "nav-link active" %></li>
-            <li class="nav-item"><%= link_to t('defaults.show'), user_path(current_user), class: "nav-link active" %></li>#後に実装するビューファイルのテストのためにつけたもので後で消します
+            <li class="nav-item"><%= link_to t('defaults.show')+'仮', user_path(current_user), class: "nav-link active" %></li>
             <li class="nav-item"><%= link_to t('defaults.edit'), edit_user_path(current_user), class: "nav-link active" %></li>
           <% else %>
             <li class="nav-item"><%= link_to t('defaults.login'), login_path, class: "nav-link active" %></li>

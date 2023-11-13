@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
     resources :users, only: %i[index show edit update destroy]
+    resources :vtubers, only: %i[new create index show edit update destroy]
+    resources :instruments, only: %i[new create]
+    resources :members, only: %i[new create]
   end
 
   root 'guide#about'
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'user_sessions#destroy'
   post '/guest_login', to: 'user_sessions#guest_login'
 
+  resources :vtubers, only: %i[show index]
   resources :songs do
     resources :comments
   end

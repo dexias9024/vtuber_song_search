@@ -4,5 +4,5 @@ class Instrument < ApplicationRecord
   has_many :request_instruments, dependent: :destroy
   has_many :user_requests, through: :request_instruments
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end

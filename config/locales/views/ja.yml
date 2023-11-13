@@ -7,11 +7,13 @@ ja:
     edit: '編集'
     delete: '削除'
     user_register: 'ユーザー登録'
+    vtuber_register: 'Vtuber登録'
 
     message:
       require_login: 'ログインが必要です'
       delete_confirm: '本当に削除しますか？'
       logout_confirm: '本当にログアウトしますか？'
+      not_authorized: '権限がありません'
 
   footer:
     request: 'Vtuber・曲リクエスト'
@@ -20,17 +22,16 @@ ja:
     privacy_policy: 'プライバシーポリシー'
     inquery: 'お問合せ'
   users:
-    profile: 'プロフィール'
-    icon: 'アイコン'
-    name: '名前'
+    show:
+      title: 'ユーザー詳細'
+      profile: 'プロフィール'
+      icon: 'アイコン'
+      name: '名前'
     new:
       title: 'ユーザー登録'
       to_login_page: 'ログインページへ'
     edit:
       title: 'ユーザー編集'
-    update:
-        success: "ユーザー情報が正常に更新されました。"
-        fail: 'ユーザー情報の更新に失敗しました。'
 
   user_sessions:
     new:
@@ -38,6 +39,28 @@ ja:
       guest_login: 'ゲストログイン'
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
+
+  vtubers:
+    show:
+      channel_name: 'チャンネル名'
+      channel_url: 'URL'
+      name: '名前'
+      overview: '概要'
+      icon: 'アイコン'
+      member: '所属'
+      instrument: '楽器'
+      not_instrument: '演奏できる楽器はありません。'
+      created_at: '作成時期'
+    index:
+      title: 'Vtuber一覧'
+      channel_name: 'チャンネル名'
+      channel_url: 'URL'
+      name: '名前'
+      icon: 'アイコン'
+      member: '所属'
+      instrument: '楽器'
+      not_instrument: '演奏できる楽器はありません。'
+
   songs:
     index:
       title: '曲一覧'
@@ -45,17 +68,57 @@ ja:
       title: 'お気に入り一覧'
 
   admin:
-    user_sessions:
-      create:
-        success: "ログインに成功しました。"
-        fail: "ログインに失敗しました。"
-      destroy:
-        success: "ログアウトしました。"
+    sidebar:
+      user: 'ユーザー'
+      song: '曲'
+      vtuber: 'Vtuber'
+      member: '所属'
+      instrument: '楽器'
+      comment: 'コメント'
+      inquiry: '問い合わせ'
     users:
-      update:
-        success: "ユーザー情報が正常に更新されました。"
-        fail: 'ユーザー情報の更新に失敗しました。'
-      destroy:
-        success: 'ユーザーを削除しました。'
+      index:
+        name: '名前'
+        role: '役職'
+        email: 'メールアドレス'
+        created_at: '作成時期'
+      show:
+        title: 'ユーザー詳細'
+        name: '名前'
+        role: '役職'
+        created_at: '作成時期'
       edit:
         title: 'ユーザー編集'
+    user_sessions:
+      new:
+        title: '管理者ログイン'
+    vtubers:
+      index:
+        channel_name: 'チャンネル名'
+        channel_url: 'URL'
+        name: '名前'
+        icon: 'アイコン'
+        created_at: '作成時期'
+      show:
+        title: 'Vtuber閲覧'
+        channel_name: 'チャンネル名'
+        channel_url: 'URL'
+        name: '名前'
+        overview: '概要'
+        instrument: '楽器'
+        not_instrument: '演奏できる楽器はありません。'
+        created_at: '作成時期'
+      new:
+        title: 'Vtuber作成'
+        not_instrument: '演奏できる楽器はありません。'
+        instruments_list: '楽器一覧'
+      edit:
+        title: 'Vtuber編集'
+        not_instrument: '演奏できる楽器はありません。'
+        instruments_list: '楽器一覧'
+    instruments:
+      new:
+        title: '楽器作成'
+    members:
+      new:
+        title: '所属作成'
