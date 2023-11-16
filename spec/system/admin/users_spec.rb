@@ -30,17 +30,17 @@ RSpec.describe "Admin::Users", type: :system do
 
       click_on '編集'
 
-      expect(page).to have_selector('label', text: 'メールアドレス'), 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: '名前'), 'Name というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'アイコン'), 'Icon というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: '役職'), 'Role というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: 'プロフィール'), 'profile というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'メールアドレス'), 'メールアドレス というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '名前'), '名前 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'アイコン'), 'アイコン というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '役職'), '役職 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'プロフィール'), 'プロフィール というラベルが表示されていることを確認してください'
 
-      expect(page).to have_css("label[for='user_email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
-      expect(page).to have_css("label[for='user_name']"), 'Name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
-      expect(page).to have_css("label[for='user_icon']"), 'Icon というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
-      expect(page).to have_css("label[for='user_role']"), 'Role というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
-      expect(page).to have_css("label[for='user_profile']"), 'profile というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='user_email']"), 'メールアドレス というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='user_name']"), '名前 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='user_icon']"), 'アイコン というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_select("user[role]"), '役職 ラベルのセレクトボックスがあることを確認してください'
+      expect(page).to have_css("label[for='user_profile']"), 'プロフィール というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       expect(page).to have_button('更新'), '更新用のボタンが表示されていることを確認してください'
 

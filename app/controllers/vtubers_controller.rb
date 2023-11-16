@@ -4,6 +4,6 @@ class VtubersController < ApplicationController
   end
 
   def index
-    @vtubers = Vtuber.all
+    @vtubers = Vtuber.all.order(created_at: :desc).page(params[:page])
   end
 end

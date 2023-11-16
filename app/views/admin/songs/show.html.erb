@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <div class="d-flex">
+        <%= link_to t('defaults.edit'), edit_admin_song_path(@song), class: 'btn btn-success' %>
+        <%= button_to t('defaults.delete'), admin_song_path(@song), method: :delete, data: { turbo_confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+      </div>
+      <div class="embed-youtube">
+        <%= content_tag 'iframe', nil, width: '100%', height: 380, src: "https://www.youtube.com/embed/#{@song.youtube_id_from_url}", frameborder: 0, gesture: 'media', allow: 'encrypted-media', allowfullscreen: true %>
+      </div>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row">Id</th>
+          <td><%= @song.id %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.video_title') %></th>
+          <td><%= @song.title %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.video_url') %></th>
+          <td><%= @song.video_url %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.name') %></th>
+          <td><%= @song.name %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.artist_name') %></th>
+          <td><%= @song.artist_name %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.vtuber') %></th>
+          <td><%= @song.vtuber.name %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.cover') %></th>
+          <td><%= @song.cover %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.created_at') %></th>
+          <td><%= l @song.created_at, format: :long %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
