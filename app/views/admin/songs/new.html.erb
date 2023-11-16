@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <%= form_with model: [:admin, @song], local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :video_url %>
+          <%= f.text_field :video_url, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :artist_name %>
+          <%= f.text_field :artist_name, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :vtuber %>
+          <%= f.collection_select :vtuber_id, @vtubers, :id, :name, { prompt: "選択してください" }, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :cover %>
+          <%= f.select :cover, Song.covers.transform_values { |value| Song.covers.keys[value] }, {}, class: 'form-control' %>
+        </div>
+        <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

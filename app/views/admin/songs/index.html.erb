@@ -7,19 +7,18 @@
             <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col"><%= t('.channel_name') %></th>
-              <th scope="col"><%= t('.channel_url') %></th>
-              <th scope="col"><%= t('.name') %></th>
-              <th scope="col"><%= t('.icon') %></th>
+              <th scope="col"><%= t('.video_title') %></th>
+              <th scope="col"><%= t('.thumbnail') %></th>
+              <th scope="col"><%= t('.artist_name') %></th>
               <th scope="col"><%= t('.created_at') %></th>
-              <th scope="col"><%= link_to t('defaults.vtuber_register'), new_admin_vtuber_path, class: 'btn btn-primary text-center' %></th>
+              <th scope="col"><%= link_to t('defaults.song_register'), new_admin_song_path, class: 'btn btn-primary text-center' %></th>
             </tr>
             </thead>
             <tbody>
-              <%= render @vtubers %>
+              <%= render @songs %>
             </tbody>
           </table>
-          <%= paginate @vtubers %>
+          <%= paginate @songs %>
         </div>
       </div>
     </div>

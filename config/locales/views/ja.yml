@@ -8,6 +8,7 @@ ja:
     delete: '削除'
     user_register: 'ユーザー登録'
     vtuber_register: 'Vtuber登録'
+    song_register: '曲登録'
 
     message:
       require_login: 'ログインが必要です'
@@ -21,6 +22,7 @@ ja:
     terms: '利用規約'
     privacy_policy: 'プライバシーポリシー'
     inquery: 'お問合せ'
+
   users:
     show:
       title: 'ユーザー詳細'
@@ -64,6 +66,16 @@ ja:
   songs:
     index:
       title: '曲一覧'
+      video_title: '動画名'
+      thumbnail: 'サムネイル'
+      artist_name: '歌唱Vtuber'
+      no_songs_message: '登録された曲はありません。'
+    show:
+      video_title: '動画名'
+      video_url: 'URL'
+      artist_name: '歌唱Vtuber'
+      cover: 'カバーかオリジナルか'
+
     user_favorites:
       title: 'お気に入り一覧'
 
@@ -76,6 +88,7 @@ ja:
       instrument: '楽器'
       comment: 'コメント'
       inquiry: '問い合わせ'
+
     users:
       index:
         name: '名前'
@@ -89,9 +102,11 @@ ja:
         created_at: '作成時期'
       edit:
         title: 'ユーザー編集'
+
     user_sessions:
       new:
         title: '管理者ログイン'
+
     vtubers:
       index:
         channel_name: 'チャンネル名'
@@ -116,9 +131,34 @@ ja:
         title: 'Vtuber編集'
         not_instrument: '演奏できる楽器はありません。'
         instruments_list: '楽器一覧'
+
     instruments:
       new:
         title: '楽器作成'
+
     members:
       new:
         title: '所属作成'
+
+    songs:
+      index:
+        title: '曲一覧'
+        video_title: '動画名'
+        thumbnail: 'サムネイル'
+        artist_name: '歌唱Vtuber'
+        no_songs_message: '登録された曲はありません。'
+        created_at: '作成時期'
+      show:
+        title: '曲データ'
+        video_title: '動画名'
+        video_url: 'URL'
+        name: '原曲名'
+        artist_name: '歌唱Vtuber'
+        vtuber: 'チャンネル主'
+        cover: 'カバーかオリジナルか'
+        created_at: '作成時期'
+      new:
+        title: '曲作成'
+      edit:
+        title: '曲編集'
+

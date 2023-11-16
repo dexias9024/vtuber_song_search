@@ -1,10 +1,10 @@
 class Admin::VtubersController < Admin::BaseController
   before_action :set_vtuber, only: %i[show edit update destroy]
+  before_action :set_members, only: %i[new show edit update]
+  before_action :set_instruments, only: %i[new show edit update destroy]
   
   def new
     @vtuber = Vtuber.new
-    @members = Member.all
-    @instruments = Instrument.all
   end
 
   def create
@@ -19,15 +19,12 @@ class Admin::VtubersController < Admin::BaseController
   end
 
   def index
-    @vtubers = Vtuber.all
+    @vtubers = Vtuber.all.order(created_at: :desc).page(params[:page])
   end
 
   def show; end
 
-  def edit
-    @members = Member.all
-    @instruments = Instrument.all
-  end
+  def edit; end
 
   def update
     if @vtuber.update(vtuber_params)
@@ -47,6 +44,14 @@ class Admin::VtubersController < Admin::BaseController
 
   def set_vtuber
     @vtuber = Vtuber.find(params[:id])
+  end
+
+  def set_members
+    @members = Member.all
+  end
+
+  def set_instruments
+    @instruments = Instrument.all
   end
 
   def vtuber_params

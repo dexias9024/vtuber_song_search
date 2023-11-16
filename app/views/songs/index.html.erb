@@ -1,3 +1,36 @@
-<h1>uta</h1>
-
-<div class="btn btn-primary "><%= link_to t('vtubers.index.title'), vtubers_path %></div>
+<div class="container">
+  <div class="row">
+    <div class="mt-3">
+      <h1><%= t('.title') %></h1>
+      <% if @songs.present? %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"><%= t('.thumbnail') %></th>
+              <th scope="col"><%= t('.video_title') %></th>
+              <th scope="col"><%= t('.artist_name') %></th>
+              <th scope="col"><%= t('.cover') %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @songs.each do |song| %>
+              <tr>
+                <td>
+                  <%= link_to song_path(song) do %>
+                    <%= image_tag "https://img.youtube.com/vi/#{song.youtube_id_from_url}/maxresdefault.jpg", width: 200, height: 120, alt: 'Video Thumbnail' %>
+                  <% end %>
+                </td>
+                <td><%= song.title %></td>
+                <td><%= song.artist_name %></td>
+                <td><%= song.cover %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @songs %>
+      <% else %>
+        <%= t('.no_songs_message') %>
+      <% end %>
+    </div>
+  </div>
+</div>
