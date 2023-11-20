@@ -27,7 +27,9 @@
             <% end %>
           </tbody>
         </table>
-        <%= paginate @songs %>
+        <div class="item__paginate">
+          <%= paginate @songs %>
+        </div>
       <% else %>
         <%= t('.no_songs_message') %>
       <% end %>

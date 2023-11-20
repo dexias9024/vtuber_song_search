@@ -24,6 +24,16 @@
           </tr>
         </table>
       </div>
+      <% if current_user && !current_user.guest? %>
+        <%= render 'comments/form', { song: @song, comment: @comment } %>
+      <% end %>
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <%= t('.comments') %>
+        </div>
+      </div>
+      <%= render 'comments/comments', { comments: @comments } %>
+      <div class="mb-4"></div>
     </div>
   </div>
 </div>

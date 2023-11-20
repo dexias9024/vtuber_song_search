@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe "Admin::UserSessions", type: :system do
   describe 'ユーザーログイン（管理側）' do
     it '1-1.admin権限のあるユーザーでログインができる' do
-      admin_user = FactoryBot.create(:user, :admin)
+      admin_user = create(:user, :admin)
 
       visit '/admin'
 
@@ -25,7 +25,7 @@ RSpec.describe "Admin::UserSessions", type: :system do
     end
 
     it '1-2.admin権限のないユーザーでログインができない' do
-      general_user = FactoryBot.create(:user, :general)
+      general_user = create(:user, :general)
 
       visit '/admin'
 
@@ -46,7 +46,7 @@ RSpec.describe "Admin::UserSessions", type: :system do
     end
 
     it '1-3.存在しないユーザーでログインができない' do
-      admin_user = FactoryBot.create(:user, :admin)
+      admin_user = create(:user, :admin)
 
       visit '/admin'
 
@@ -67,7 +67,7 @@ RSpec.describe "Admin::UserSessions", type: :system do
     end
 
     it '1-4.パスワードが間違っている場合にログインができない' do
-      admin_user = FactoryBot.create(:user, :admin)
+      admin_user = create(:user, :admin)
 
       visit '/admin'
 
@@ -90,7 +90,7 @@ RSpec.describe "Admin::UserSessions", type: :system do
 
   describe 'adminユーザーログアウト' do
     it '2-1.ユーザーのログアウトができる' do
-      admin_user = FactoryBot.create(:user, :admin) # describe使わないので、let!を使わずに記載
+      admin_user = create(:user, :admin) # describe使わないので、let!を使わずに記載
 
       visit '/admin'
 

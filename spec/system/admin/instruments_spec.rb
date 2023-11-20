@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Admin::Instruments", type: :system do 
   describe '楽器の新規作成' do
     before do
-      admin_user = FactoryBot.create(:user, :admin)
+      admin_user = create(:user, :admin)
     
       visit '/admin'
     
@@ -35,7 +35,7 @@ RSpec.describe "Admin::Instruments", type: :system do
     end
 
     it '1-2.同じ名前の楽器は新規作成できない' do
-      instrument = FactoryBot.create(:instrument, name: 'test')
+      instrument = create(:instrument, name: 'test')
 
       visit 'admin/instruments/new'
 

@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <%= comment.id %>
+  </td>
+  <td>
+    <%= comment.content %>
+  </td>
+  <td>
+    <%= comment.song.name %>
+  </td>
+  <td>
+    <%= comment.user_id %>
+  </td>
+  <td>
+    <%= comment.user.name %>
+  </td>
+  <td>
+    <%= l comment.created_at, format: :long %>
+  </td>
+  <td class="d-flex">
+    <%= button_to t('defaults.delete'), admin_comment_path(comment), method: :delete, data: { turbo_confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+  </td>
+</tr>

@@ -7,11 +7,38 @@ FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 # Rails app lives here
 WORKDIR /rails
 
+# ここから下のARG ENVは勝手に変更したもの
 # Set production environment
+ARG RAILS_MAX_THREADS=5
+ARG DB_USERNAME
+ARG DB_PASSWORD
+ARG DB_HOST
+ARG DB_PORT
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
+    RAILS_MAX_THREADS=${RAILS_MAX_THREADS} \
+    DB_USERNAME=${DB_USERNAME} \
+    DB_PASSWORD=${DB_PASSWORD} \
+    DB_HOST=${DB_HOST} \
+    DB_PORT=${DB_PORT}
+ARG DATABASE_URL
+ENV DATABASE_URL ${DATABASE_URL}
+
+# Heroku
+ARG LANG
+ENV LANG ${LANG}
+ARG RACK_ENV
+ENV RACK_ENV ${RACK_ENV}
+ARG RAILS_ENV
+ENV RAILS_ENV ${RAILS_ENV}
+ARG RAILS_LOG_TO_STDOUT
+ENV RAILS_LOG_TO_STDOUT ${RAILS_LOG_TO_STDOUT}
+ARG RAILS_SERVE_STATIC_FILES
+ENV RAILS_SERVE_STATIC_FILES ${RAILS_SERVE_STATIC_FILES}
+ARG SECRET_KEY_BASE
+ENV SECRET_KEY_BASE ${SECRET_KEY_BASE}
 
 
 # Throw-away build stage to reduce size of final image
@@ -22,8 +49,8 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3
 
 # Install JavaScript dependencies
-ARG NODE_VERSION=16.16.0
-ARG YARN_VERSION=1.22.19
+ARG NODE_VERSION=18.12.0
+ARG YARN_VERSION=4.0.1
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \

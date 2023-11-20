@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :instruments, only: %i[new create]
     resources :members, only: %i[new create]
     resources :songs, only: %i[new create index show edit update destroy]
+    resources :comments, only: %i[index destroy]
   end
 
   root 'guide#about'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :vtubers, only: %i[show index]
   resources :songs, only: %i[new create index show edit update destroy] do
-    resources :comments
+    resources :comments, only: %i[create destroy]
   end
   resources :inqueries
   get '/request', to: 'user_requests#new'
