@@ -1,4 +1,11 @@
 ja:
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   activerecord:
     models:
       user: 'ユーザー'
@@ -40,6 +47,10 @@ ja:
         vtuber: 'チャンネル主'
         cover: 'カバーかオリジナルか'
 
+      comment:
+        content: 'コメント'
+        comment_content: 'コメント内容'
+
   users:
     update:
       success: "ユーザー情報が正常に更新されました。"
@@ -54,6 +65,14 @@ ja:
         fail: "ログインに失敗しました。"
       destroy:
         success: "ログアウトしました。"
+
+  comments:
+    create:
+      success: 'コメントを投稿しました。'
+      fail: 'コメントの投稿に失敗しました。'
+    destroy:
+      success: 'コメントを削除しました。'
+      fail: 'コメントの削除に失敗しました。'
 
   admin:
     users:
@@ -99,4 +118,9 @@ ja:
         fail: '曲データの更新に失敗しました。'
       destroy:
         success: '曲データを削除しました。'
-        
+        fail: '曲データの削除に失敗しました。'
+
+    comments:
+      destroy:
+        success: 'コメントを削除しました。'
+        fail: 'コメントの削除に失敗しました。'

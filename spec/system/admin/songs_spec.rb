@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Admin::Songs", type: :system do 
   describe 'songの新規作成' do
     before do
-      admin_user = FactoryBot.create(:user, :admin)
-      vtuber = FactoryBot.create(:vtuber, name: 'test')
+      admin_user = create(:user, :admin)
+      vtuber = create(:vtuber, name: 'test')
     
       visit '/admin'
     
@@ -49,7 +49,7 @@ RSpec.describe "Admin::Songs", type: :system do
     end
 
     it '1-2.同じURLのsongは新規作成できない' do
-      song = FactoryBot.create(:song, video_url: 'https://www.youtube.com/test')
+      song = create(:song, video_url: 'https://www.youtube.com/test')
       visit 'admin/songs/new'
 
       expect(page).to have_selector('label', text: '動画名'), '動画名 というラベルが表示されていることを確認してください'
@@ -109,9 +109,9 @@ RSpec.describe "Admin::Songs", type: :system do
 
   describe 'Songの編集・削除' do
     before do
-      admin_user = FactoryBot.create(:user, :admin)
-      vtuber = FactoryBot.create(:vtuber, name: 'test')
-      song = FactoryBot.create(:song)
+      admin_user = create(:user, :admin)
+      vtuber = create(:vtuber, name: 'test')
+      song = create(:song)
 
       visit '/admin'
 

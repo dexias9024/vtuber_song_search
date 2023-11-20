@@ -29,3 +29,44 @@
 .custom-link {
   padding: 5px 10px;
 }
+
+.item__paginate{
+  width: 100%;
+  margin: auto;
+}
+
+.pagination{
+  text-align: center;
+  display: flex;
+  justify-content: center; 
+}
+
+.pagination span{
+  text-align: center;
+  width: 50px;
+  font-size: 20px;
+}
+
+.pagination a{
+  color: #818181;
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.pagination a:hover{
+  width: 50px;
+  height: 50px;
+  background-color: #84b8eb;
+  color: #FFF;
+  border-radius: 100%;
+  padding: 10px;
+}
+
+.current{
+  font-weight: bold;
+  color: #84b8eb;
+  padding: 10px;
+}

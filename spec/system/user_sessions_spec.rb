@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "UserSessions", type: :system do
   describe 'ユーザーログイン' do
     it '1-1.ユーザーのログインができる' do
-      user = FactoryBot.create(:user)
+      user = create(:user)
 
       visit '/login'
 
@@ -24,7 +24,7 @@ RSpec.describe "UserSessions", type: :system do
     end
 
     it '1-2.入力項目が不足している場合にログインができない' do
-      user = FactoryBot.create(:user)
+      user = create(:user)
 
       visit '/login'
 
@@ -45,7 +45,7 @@ RSpec.describe "UserSessions", type: :system do
     end
 
     it '1-3.存在しないユーザーでログインができない' do
-      user = FactoryBot.create(:user)
+      user = create(:user)
 
       visit '/login'
 
@@ -66,7 +66,7 @@ RSpec.describe "UserSessions", type: :system do
     end
 
     it '1-4.パスワードが間違っている場合にログインができない' do
-      user = FactoryBot.create(:user)
+      user = create(:user)
 
       visit '/login'
 
@@ -89,7 +89,7 @@ RSpec.describe "UserSessions", type: :system do
 
   describe 'ユーザーログアウト' do
     it '2-1.ユーザーのログアウトができる' do
-      user = FactoryBot.create(:user)
+      user = create(:user)
 
       visit '/login'
 
@@ -119,7 +119,7 @@ RSpec.describe "UserSessions", type: :system do
 
   describe 'ゲストログイン' do
     it '3-1.ゲストログインができる' do
-      user = FactoryBot.create(:user)
+      user = create(:user)
 
       visit '/login'
 

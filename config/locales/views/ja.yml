@@ -6,6 +6,7 @@ ja:
     show: '詳細'
     edit: '編集'
     delete: '削除'
+    post: '投稿'
     user_register: 'ユーザー登録'
     vtuber_register: 'Vtuber登録'
     song_register: '曲登録'
@@ -75,6 +76,8 @@ ja:
       video_url: 'URL'
       artist_name: '歌唱Vtuber'
       cover: 'カバーかオリジナルか'
+      comments: 'コメント欄'
+      no_comment: 'コメントはありません'
 
     user_favorites:
       title: 'お気に入り一覧'
@@ -162,3 +165,10 @@ ja:
       edit:
         title: '曲編集'
 
+    comments:
+      index:
+        content: 'コメント'
+        song_name: '曲名'
+        user_id: 'ユーザーID'
+        user_name: 'ユーザー名'
+        created_at: '作成時期'

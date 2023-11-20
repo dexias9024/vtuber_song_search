@@ -1,0 +1,28 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col"><%= t('.content') %></th>
+              <th scope="col"><%= t('.song_name') %></th>
+              <th scope="col"><%= t('.user_id') %></th>
+              <th scope="col"><%= t('.user_name') %></th>
+              <th scope="col"><%= t('.created_at') %></th>
+            </tr>
+            </thead>
+            <tbody>
+              <%= render @comments %>
+            </tbody>
+          </table>
+          <div class="item__paginate">
+            <%= paginate @comments %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

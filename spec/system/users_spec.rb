@@ -31,7 +31,7 @@ RSpec.describe "Users", type: :system do
     end
 
     it '1-2.同じメールアドレスのユーザーは新規作成できない' do
-      user = FactoryBot.create(:user)
+      user = create(:user)
 
       visit 'users/new'
 
@@ -83,7 +83,7 @@ RSpec.describe "Users", type: :system do
 
   describe 'ユーザー編集' do
     before do
-      user = FactoryBot.create(:user)
+      user = create(:user)
 
       visit '/login'
 

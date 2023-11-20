@@ -2,5 +2,5 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :song
 
-  validates :user_id, uniqueness: { scope: :song_id }
+  validates :content, presence: true, length: { maximum: 5000 }
 end

@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "Admin::Vtubers", type: :system do 
   describe 'vtuberの新規作成' do
     before do
-      admin_user = FactoryBot.create(:user, :admin)
-      member = FactoryBot.create(:member, name: 'test')
-      instrument = FactoryBot.create(:instrument, name: 'test')
+      admin_user = create(:user, :admin)
+      member = create(:member, name: 'test')
+      instrument = create(:instrument, name: 'test')
     
       visit '/admin'
     
@@ -53,7 +53,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
     end
 
     it '1-2.同じチャンネル名のvtuberは新規作成できない' do
-      vtuber = FactoryBot.create(:vtuber, channel_name: 'test')
+      vtuber = create(:vtuber, channel_name: 'test')
       visit 'admin/vtubers/new'
 
       expect(page).to have_selector('label', text: 'チャンネル名'), 'チャンネル名 というラベルが表示されていることを確認してください'
@@ -85,7 +85,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
     end
 
     it '1-3.同じURLのvtuberは新規作成できない' do
-      vtuber = FactoryBot.create(:vtuber, channel_url: 'https://www.youtube.com/test')
+      vtuber = create(:vtuber, channel_url: 'https://www.youtube.com/test')
       visit 'admin/vtubers/new'
 
       expect(page).to have_selector('label', text: 'チャンネル名'), 'チャンネル名 というラベルが表示されていることを確認してください'
@@ -149,9 +149,9 @@ RSpec.describe "Admin::Vtubers", type: :system do
 
   describe 'Vtuberの編集・削除' do
     before do
-      admin_user = FactoryBot.create(:user, :admin)
-      vtuber = FactoryBot.create(:vtuber)
-      member = FactoryBot.create(:member, name: 'test')
+      admin_user = create(:user, :admin)
+      vtuber = create(:vtuber)
+      member = create(:member, name: 'test')
 
       visit '/admin'
 
@@ -169,8 +169,8 @@ RSpec.describe "Admin::Vtubers", type: :system do
     end
 
     it '2-1.Vtuber情報の編集ができる' do
-      vtuber = FactoryBot.create(:vtuber)
-      instrument = FactoryBot.create(:instrument, name: 'test')
+      vtuber = create(:vtuber)
+      instrument = create(:instrument, name: 'test')
 
       visit admin_vtuber_path(vtuber)
 
@@ -209,7 +209,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
     end
 
     it '2-2.Vtuber情報の削除ができる' do
-      vtuber = FactoryBot.create(:vtuber)
+      vtuber = create(:vtuber)
 
       visit admin_vtuber_path(vtuber)
 

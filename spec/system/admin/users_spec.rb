@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe "Admin::Users", type: :system do
   describe 'ユーザー編集・削除（管理側）' do
     before do
-      admin_user = FactoryBot.create(:user, :admin)
+      admin_user = create(:user, :admin)
 
       visit '/admin'
 
@@ -22,7 +22,7 @@ RSpec.describe "Admin::Users", type: :system do
     end
 
     it '3-1.他人のユーザー情報の編集ができる' do
-      other_user = FactoryBot.create(:user, :general)
+      other_user = create(:user, :general)
 
       visit admin_user_path(other_user)
 
@@ -57,7 +57,7 @@ RSpec.describe "Admin::Users", type: :system do
     end
 
     it '3-2.他人のユーザー情報の削除ができる' do
-      other_user = FactoryBot.create(:user, :general)
+      other_user = create(:user, :general)
 
       visit admin_user_path(other_user)
 

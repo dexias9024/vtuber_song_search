@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Admin::Members", type: :system do
   describe '所属の新規作成' do
     before do
-      admin_user = FactoryBot.create(:user, :admin)
+      admin_user = create(:user, :admin)
     
       visit '/admin'
     
@@ -35,7 +35,7 @@ RSpec.describe "Admin::Members", type: :system do
     end
 
     it '1-2.同じ名前の所属は新規作成できない' do
-      member = FactoryBot.create(:member, name: 'test')
+      member = create(:member, name: 'test')
 
       visit 'admin/members/new'
 
