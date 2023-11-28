@@ -2,8 +2,7 @@ class Song < ApplicationRecord
   belongs_to :vtuber
   has_many :comments, dependent: :destroy
   has_many :vtubers, through: :comments
-  has_many :user_favorites, dependent: :destroy
-  has_many :users, through: :user_favorites
+  has_many :favorites, dependent: :destroy
 
   enum cover: { cover: 0, original: 1} 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_10_125519) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_24_074426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_125519) do
     t.datetime "updated_at", null: false
     t.index ["song_id"], name: "index_comments_on_song_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "song_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["song_id"], name: "index_favorites_on_song_id"
+    t.index ["user_id", "song_id"], name: "index_favorites_on_user_id_and_song_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "inqueries", force: :cascade do |t|
@@ -41,11 +51,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_125519) do
   end
 
   create_table "request_instruments", force: :cascade do |t|
-    t.bigint "user_request_id", null: false
+    t.bigint "request_id", null: false
     t.bigint "instrument_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["instrument_id"], name: "index_request_instruments_on_instrument_id"
-    t.index ["user_request_id", "instrument_id"], name: "index_request_instruments_on_user_request_id_and_instrument_id", unique: true
-    t.index ["user_request_id"], name: "index_request_instruments_on_user_request_id"
+    t.index ["request_id", "instrument_id"], name: "index_request_instruments_on_request_id_and_instrument_id", unique: true
+    t.index ["request_id"], name: "index_request_instruments_on_request_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "channnel_status", null: false
+    t.string "name", null: false
+    t.string "url", null: false
+    t.string "member_name"
+    t.index ["name"], name: "index_requests_on_name"
+    t.index ["url"], name: "index_requests_on_url", unique: true
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -61,35 +84,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_125519) do
     t.index ["vtuber_id"], name: "index_songs_on_vtuber_id"
   end
 
-  create_table "user_favorites", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "song_id", null: false
-    t.index ["song_id"], name: "index_user_favorites_on_song_id"
-    t.index ["user_id", "song_id"], name: "index_user_favorites_on_user_id_and_song_id", unique: true
-    t.index ["user_id"], name: "index_user_favorites_on_user_id"
-  end
-
-  create_table "user_requests", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "channnel_status", null: false
-    t.string "name", null: false
-    t.string "url", null: false
-    t.string "member_name"
-    t.index ["name"], name: "index_user_requests_on_name"
-    t.index ["url"], name: "index_user_requests_on_url", unique: true
-    t.index ["user_id"], name: "index_user_requests_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "crypted_password", null: false
     t.string "salt"
+    t.string "icon"
     t.text "profile"
     t.integer "role", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "icon"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["role"], name: "index_users_on_role"
   end
@@ -97,6 +101,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_125519) do
   create_table "vtuber_instruments", force: :cascade do |t|
     t.bigint "vtuber_id", null: false
     t.bigint "instrument_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["instrument_id"], name: "index_vtuber_instruments_on_instrument_id"
     t.index ["vtuber_id", "instrument_id"], name: "index_vtuber_instruments_on_vtuber_id_and_instrument_id", unique: true
     t.index ["vtuber_id"], name: "index_vtuber_instruments_on_vtuber_id"
@@ -119,12 +125,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_10_125519) do
 
   add_foreign_key "comments", "songs"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "songs"
+  add_foreign_key "favorites", "users"
   add_foreign_key "request_instruments", "instruments"
-  add_foreign_key "request_instruments", "user_requests"
+  add_foreign_key "request_instruments", "requests"
+  add_foreign_key "requests", "users"
   add_foreign_key "songs", "vtubers"
-  add_foreign_key "user_favorites", "songs"
-  add_foreign_key "user_favorites", "users"
-  add_foreign_key "user_requests", "users"
   add_foreign_key "vtuber_instruments", "instruments"
   add_foreign_key "vtuber_instruments", "vtubers"
   add_foreign_key "vtubers", "instruments"

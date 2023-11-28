@@ -6,8 +6,8 @@
       <div class="col-md-12">
         <!-- The time line -->
         <div class="timeline">
-        <% if @user_requests.any? %>
-          <% @user_requests.each do |request| %>
+        <% if @requests.any? %>
+          <% @requests.each do |request| %>
             <div>
               <i class="fas fa-envelope bg-blue"></i>
               <div class="timeline-item">
@@ -17,7 +17,7 @@
                   <%= request.message %>
                 </div>
                 <div class="timeline-footer">
-                  <%= link_to t('defaults.show'), admin_user_request_path(request), class: 'btn btn-primary btn-sm' %>
+                  <%= link_to t('defaults.show'), admin_request_path(request), class: 'btn btn-primary btn-sm' %>
                 </div>
               </div>
             </div>

@@ -1,0 +1,11 @@
+<turbo-frame id="favorite-button">
+  <% if current_user && current_user.favorited?(song) %>
+    <%= link_to song_favorite_path(song, id: song.id), data: { turbo_method: "delete" } do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  <% else %>
+    <%= link_to song_favorites_path(song), data: { turbo_method: "post" } do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% end %>
+</turbo-frame>

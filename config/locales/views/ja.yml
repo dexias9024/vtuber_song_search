@@ -7,15 +7,20 @@ ja:
     edit: '編集'
     delete: '削除'
     post: '投稿'
+    favorites: 'お気に入り一覧'
     user_register: 'ユーザー登録'
+    user_edit: 'ユーザー編集'
     vtuber_register: 'Vtuber登録'
     song_register: '曲登録'
+
 
     message:
       require_login: 'ログインが必要です'
       delete_confirm: '本当に削除しますか？'
       logout_confirm: '本当にログアウトしますか？'
       not_authorized: '権限がありません'
+      fovirites: 'お気に入りに登録しました'
+      not_fovirites: 'お気に入りから外しました'
 
   footer:
     request: 'Vtuber・曲リクエスト'
@@ -70,6 +75,7 @@ ja:
       video_title: '動画名'
       thumbnail: 'サムネイル'
       artist_name: '歌唱Vtuber'
+      cover: 'カバーかオリジナルか'
       no_songs_message: '登録された曲はありません。'
     show:
       video_title: '動画名'
@@ -79,8 +85,13 @@ ja:
       comments: 'コメント欄'
       no_comment: 'コメントはありません'
 
-    user_favorites:
+    favorites:
       title: 'お気に入り一覧'
+      video_title: '動画名'
+      thumbnail: 'サムネイル'
+      artist_name: '歌唱Vtuber'
+      cover: 'カバーかオリジナルか'
+      no_songs_message: '登録された曲はありません。'
 
   admin:
     sidebar:

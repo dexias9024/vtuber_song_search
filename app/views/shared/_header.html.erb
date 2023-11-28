@@ -11,8 +11,10 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <% if logged_in? %>
             <li class="nav-item"><%= button_to t('defaults.logout'), logout_path, method: :delete, class: "nav-link active" %></li>
-            <li class="nav-item"><%= link_to t('defaults.show')+'仮', user_path(current_user), class: "nav-link active" %></li>
-            <li class="nav-item"><%= link_to t('defaults.edit'), edit_user_path(current_user), class: "nav-link active" %></li>
+            <% if current_user && !current_user.guest? %>
+              <li class="nav-item"><%= link_to t('defaults.user_edit'), edit_user_path(current_user), class: "nav-link active" %></li>
+              <li class="nav-item"><%= link_to t('defaults.favorites'), favorites_songs_path, class: "nav-link active" %></li>
+            <% end %>
           <% else %>
             <li class="nav-item"><%= link_to t('defaults.login'), login_path, class: "nav-link active" %></li>
             <li class="nav-item"><%= link_to t('defaults.user_register'), new_user_path, class: "nav-link active" %></li>

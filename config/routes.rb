@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   end
 
   root 'guide#about'
-  resources :users, only: %i[new create show edit update] do
-    resources :user_favorites
-  end
+  resources :users, only: %i[new create show edit update]
   get '/login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
@@ -24,10 +22,15 @@ Rails.application.routes.draw do
   resources :vtubers, only: %i[show index]
   resources :songs, only: %i[new create index show edit update destroy] do
     resources :comments, only: %i[create destroy]
+    resources :favorites, only: %i[create destroy]
+    collection do
+      get :favorites
+    end
   end
+  
   resources :inqueries
-  get '/request', to: 'user_requests#new'
-  post '/request', to: 'user_requests#create'
+  get '/request', to: 'requests#new'
+  post '/request', to: 'requests#create'
 
   get '/about', to: 'guide#about'
   get '/terms', to: 'guide#terms'

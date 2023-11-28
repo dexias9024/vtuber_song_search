@@ -13,18 +13,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @songs.each do |song| %>
-              <tr>
-                <td>
-                  <%= link_to song_path(song) do %>
-                    <%= image_tag "https://img.youtube.com/vi/#{song.youtube_id_from_url}/maxresdefault.jpg", width: 200, height: 120, alt: 'Video Thumbnail' %>
-                  <% end %>
-                </td>
-                <td><%= song.title %></td>
-                <td><%= song.artist_name %></td>
-                <td><%= song.cover %></td>
-              </tr>
-            <% end %>
+            <%= render @songs %>
           </tbody>
         </table>
         <div class="item__paginate">
