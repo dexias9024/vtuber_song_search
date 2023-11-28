@@ -1,6 +1,8 @@
 <tr id="comment-<%= comment.id %>">
   <td style="width: 60px">
-    <%= image_tag comment.user.icon.url, class: 'rounded-circle', size: '50x50' %>
+    <%= link_to user_path(comment.user) do %>
+      <%= image_tag comment.user.icon.url, class: 'rounded-circle', size: '50x50' %>
+    <% end %>
   </td>
   <td>
     <h3 class="small"><%= comment.user.name %></h3>

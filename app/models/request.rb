@@ -1,4 +1,4 @@
-class UserRequest < ApplicationRecord
+class Request < ApplicationRecord
   belongs_to :user
   has_many :request_instruments, dependent: :destroy
   has_many :instruments, through: :request_instruments

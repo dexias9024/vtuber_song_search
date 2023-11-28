@@ -1,2 +1,0 @@
-class UserFavoritesController < ApplicationController
-end

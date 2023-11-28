@@ -26,9 +26,11 @@ Member.create_or_find_by(name: 'UniVIRTUAL')
 Member.create_or_find_by(name: '神椿')
 Member.create_or_find_by(name: 'ライブユニオン')
 Member.create_or_find_by(name: 'ReAcT')
+Member.create_or_find_by(name: 'RIOT MUSIC')
 
 #instruments
 Instrument.create_or_find_by(name: 'ギター')
 Instrument.create_or_find_by(name: 'ピアノ')
 Instrument.create_or_find_by(name: 'ヴァイオリン')
 Instrument.create_or_find_by(name: 'フルート')
+Instrument.create_or_find_by(name: 'エレクトーン')

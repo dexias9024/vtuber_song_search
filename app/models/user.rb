@@ -3,9 +3,9 @@ class User < ApplicationRecord
 
   mount_uploader :icon, IconUploader
 
-  has_many :user_requests, dependent: :destroy
-  has_many :user_favorites, dependent: :destroy
-  has_many :songs, through: :user_favorites
+  has_many :requests, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :songs, through: :favorites
   has_many :comments, dependent: :destroy
   has_many :songs, through: :comments
 
@@ -19,5 +19,9 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object.user_id
+  end
+
+  def favorited?(song)
+    favorites.exists?(song: song)
   end
 end

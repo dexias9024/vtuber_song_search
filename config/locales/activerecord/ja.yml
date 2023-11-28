@@ -74,6 +74,12 @@ ja:
       success: 'コメントを削除しました。'
       fail: 'コメントの削除に失敗しました。'
 
+  favorites:
+    create:
+      success: 'お気に入り登録をしました。'
+    destroy:
+      success: 'お気に入りを取り消しました。'
+
   admin:
     users:
       update:

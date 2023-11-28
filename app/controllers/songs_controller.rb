@@ -8,4 +8,8 @@ class SongsController < ApplicationController
     @comment = Comment.new
     @comments = @song.comments
   end
+
+  def favorites
+    @favorites = current_user.favorites.includes(:song).order(created_at: :desc).page(params[:page])
+  end
 end
