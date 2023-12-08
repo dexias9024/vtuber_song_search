@@ -4,7 +4,7 @@ namespace :request_vtuber do
   desc 'Request vtuber'
   task run: :environment do
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
-    youtube.key = ENV['API_KEY']
+    youtube.key = ENV['YOUTUBE_API_KEY']
     
     song_id = 'JRYdJA-QsVI'
     video_info = youtube.list_videos('snippet', id: song_id).items.first.snippet
