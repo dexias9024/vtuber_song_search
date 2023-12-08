@@ -1,0 +1,75 @@
+<%= @video_info %>
+<%= "Title: #{@video_info.title}" %><br>
+<%= "Description: #{@video_info.description}" %><br>
+<%= "Published At: #{@video_info.published_at}" %><br>
+<%= "Channel Title: #{@video_info.channel_title}" %><br>
+
+<h1>Vtuber</h1>
+<% thumbnail_url = 'https://yt3.googleusercontent.com/ytc/APkrFKZlmafKBFj_P4Y8Oixr6qTnOr2Mtb5ufJsHjNw0=s176-c-k-c0x00ffffff-no-rj' %>
+<img src="<%= thumbnail_url %>" alt="Video Thumbnail">
+<div class="video">
+  <p>チャンネルタイトル: <%= @vtuber_info.snippet.title %></p>
+  <p>チャンネル説明: <%= @vtuber_info.snippet.description %></p>
+  <p>公開日: <%= @vtuber_info.snippet.published_at %></p>
+  <p>カスタムURL: <%= @vtuber_info.snippet.custom_url %></p> if @vtuber_info.snippet.custom_url
+  <p>サムネイルURL: <%= @vtuber_info.snippet.thumbnails.default.url %></p>
+  <img src="<%= @vtuber_info.snippet.thumbnails.default.url %>" alt="Video Thumbnail">
+</div>
+
+<%= @vtuber_info %>
+
+<h1>Music Videos</h1>
+<% @music_videos.each do |video| %>
+  <div class="video">
+    <p>Title: <%= video.snippet.title %></p>
+    <p>Description: <%= video.snippet.description %></p>
+    <p>Published at: <%= video.snippet.published_at %></p>
+    <p>Thumbnail: <%= image_tag(video.snippet.thumbnails.default.url) %></p>
+  </div>
+<% end %>
+
+<h1>Song Titles and Singer Names</h1>
+
+<ul>
+  <% @titles.each_with_index do |title, index| %>
+    <li>
+      <strong>Title:</strong> <%= title %>,
+      <strong>Singer Name:</strong> <%= @singer_names[index] %>
+    </li>
+  <% end %>
+</ul>
+<h1>Song Titles and Song Names</h1>
+
+<ul>
+  <% @titles.each_with_index do |title, index| %>
+    <li>
+      <strong>Title:</strong> <%= title %>,
+      <strong>Song Name:</strong> <%= @song_names[index] %>
+    </li>
+  <% end %>
+</ul>
+
+<% @music_videos.each do |video| %>
+  <div>
+    <h2><%= video.snippet.title %></h2>
+    <p><%= video.snippet.description %></p>
+    <!-- 他の動画情報を表示 -->
+
+    <% live_status = video.snippet.live_broadcast_content %>
+    <% case live_status %>
+      <% when 'none' %>
+        <p>通常の動画</p>
+      <% when 'upcoming' %>
+        <p>予定されたライブストリーム</p>
+      <% when 'live' %>
+        <p>ライブ中</p>
+      <% else %>
+        <p>不明なステータス</p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= "song_urls#{@existing_song_urls}" %>
+<%= "song_ids #{@existing_song_ids}" %>
+
+<%= "vtuber_id #{@video_info.channel_id}" %>

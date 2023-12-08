@@ -38,6 +38,11 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'dotenv-rails'
 
+gem 'sassc-rails'
+
+gem 'google-apis-youtube_v3'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

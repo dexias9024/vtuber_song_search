@@ -847,7 +847,7 @@ conftest.c:16:57: note: include the header <math.h> or explicitly provide a decl
 1 warning generated.
 Undefined symbols for architecture arm64:
   "_finite", referenced from:
-      _t in conftest-83cf98.o
+      _t in conftest-609849.o
 ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 checked program was:
