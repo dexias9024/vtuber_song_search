@@ -1,6 +1,4 @@
 class Vtuber < ApplicationRecord
-  mount_uploader :icon, IconUploader
-  
   has_many :songs, dependent: :destroy
   belongs_to :member
   has_many :vtuber_instruments, dependent: :destroy

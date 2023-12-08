@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'comment', type: :model do
-  context "Instrumentを作ることができる" do
+  context "commentを作ることができる" do
     it "1-1.contentがある場合、有効である" do
       comment = FactoryBot.build(:comment)
       expect(comment).to be_valid

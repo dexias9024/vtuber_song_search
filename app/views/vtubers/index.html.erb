@@ -16,14 +16,14 @@
         <tbody>
           <% @vtubers.each do |vtuber| %>
             <tr>
-              <td><%= image_tag vtuber.icon.url, class: 'brand-image img-circle elevation-3', style: 'width: 50px; height: 50px;' %></td>
+              <td><%= image_tag vtuber.icon, class: 'brand-image img-circle elevation-3', style: 'width: 50px; height: 50px;' %></td>
               <td><%= link_to vtuber.channel_name, vtuber_path(vtuber) %></td>
               <td><%= vtuber.channel_url %></td>
               <td><%= vtuber.name %></td>
               <td><%= vtuber.member.name %></td>
               <td>
-                <% if vtuber.instrument_id.present? %>
-                  <%= vtuber.instrument.name %>
+                <% if vtuber.instruments.any? %>
+                  <%= vtuber.instruments.map(&:name).join(', ') %>
                 <% else %>
                   <%= t('.not_instrument') %>
                 <% end %>

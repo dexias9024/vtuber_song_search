@@ -18,11 +18,10 @@
         </div>
         <div class="form-group">
           <%= f.label :icon %>
-          <%= f.file_field :icon, onchange: 'previewFileWithId(preview)', class: 'form-control', accept: 'image/*' %>
-          <%= f.hidden_field :icon_cache %>
+          <%= f.text_field :icon, id: 'iconUrlInput', class: 'form-control' %>
         </div>
         <div class='mt-3 mb-3'>
-          <%= image_tag @vtuber.icon.url,
+          <%= image_tag 'music_rabbit.jpg',
                         class: 'rounded-circle',
                         id: 'preview',
                         size: '100x100' %>
@@ -57,20 +56,17 @@
 </div>
 
 <script>
-  function previewFileWithId(id) {
-    const target = this.event.target;
-    const file = target.files[0];
-    const reader  = new FileReader();
-    reader.onloadend = function () {
-        preview.src = reader.result;
-    }
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        preview.src = '';
-    }
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+    var iconInput = document.getElementById('iconUrlInput');
+    var previewImage = document.getElementById('preview');
+    
+    previewImage.src = iconInput.value;
 
+    iconInput.addEventListener('input', function() {
+      previewImage.src = this.value;
+    });
+  });
+  
   document.getElementById("toggleCheckbox").addEventListener("click", function() {
     var checkboxWrapper = document.getElementById("checkboxWrapper");
     checkboxWrapper.style.display = (checkboxWrapper.style.display === "none") ? "block" : "none";

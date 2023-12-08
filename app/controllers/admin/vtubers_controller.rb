@@ -55,6 +55,6 @@ class Admin::VtubersController < Admin::BaseController
   end
 
   def vtuber_params
-    params.require(:vtuber).permit(:channel_name, :channel_url, :name, :icon, :icon_cache, :overview, :member_id, instrument_ids: [])
+    params.require(:vtuber).permit(:channel_name, :channel_url, :name, :icon, :overview, :member_id, instrument_ids: [])
   end
 end

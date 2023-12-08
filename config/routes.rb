@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get :favorites
     end
   end
+  get '/youtube_api', to: 'youtube_api#main'
   
   resources :inqueries
   get '/request', to: 'requests#new'

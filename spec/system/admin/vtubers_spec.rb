@@ -199,9 +199,8 @@ RSpec.describe "Admin::Vtubers", type: :system do
 
       fill_in 'チャンネル名', with: 'test02'
       fill_in '名前', with: 'test02'
-      file_path = Rails.root.join('spec', 'fixtures', 'test_human.jpg')
-      attach_file('アイコン', file_path)
       select 'test', from: 'vtuber[member_id]'
+      sleep 10
 
       click_on '更新'
 
