@@ -39,6 +39,7 @@ gem 'carrierwave'
 gem 'dotenv-rails'
 
 gem 'sassc-rails'
+gem 'msgpack'
 
 gem 'google-apis-youtube_v3'
 
