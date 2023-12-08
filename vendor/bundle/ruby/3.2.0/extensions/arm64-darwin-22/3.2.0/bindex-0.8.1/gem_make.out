@@ -3,16 +3,16 @@ current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/ven
 creating Makefile
 
 current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= sitearchdir\=./.gem.20231206-347-nik3tv sitelibdir\=./.gem.20231206-347-nik3tv clean
+make DESTDIR\= sitearchdir\=./.gem.20231208-41598-b5l0et sitelibdir\=./.gem.20231208-41598-b5l0et clean
 
 current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= sitearchdir\=./.gem.20231206-347-nik3tv sitelibdir\=./.gem.20231206-347-nik3tv
+make DESTDIR\= sitearchdir\=./.gem.20231208-41598-b5l0et sitelibdir\=./.gem.20231208-41598-b5l0et
 compiling cruby.c
 linking shared-object skiptrace/internal/cruby.bundle
 
 current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= sitearchdir\=./.gem.20231206-347-nik3tv sitelibdir\=./.gem.20231206-347-nik3tv install
-/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20231206-347-nik3tv/skiptrace/internal
+make DESTDIR\= sitearchdir\=./.gem.20231208-41598-b5l0et sitelibdir\=./.gem.20231208-41598-b5l0et install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20231208-41598-b5l0et/skiptrace/internal
 
 current directory: /Users/hosinomakitaka/workspace/runteq/vtuber_song_search/vendor/bundle/ruby/3.2.0/gems/bindex-0.8.1/ext/skiptrace
-make DESTDIR\= sitearchdir\=./.gem.20231206-347-nik3tv sitelibdir\=./.gem.20231206-347-nik3tv clean
+make DESTDIR\= sitearchdir\=./.gem.20231208-41598-b5l0et sitelibdir\=./.gem.20231208-41598-b5l0et clean
