@@ -12,6 +12,7 @@ ja:
     user_edit: 'ユーザー編集'
     vtuber_register: 'Vtuber登録'
     song_register: '曲登録'
+    member_register: '所属登録'
 
 
     message:
@@ -56,7 +57,7 @@ ja:
       overview: '概要'
       icon: 'アイコン'
       member: '所属'
-      instrument: '楽器'
+      instrument: '演奏楽器'
       not_instrument: '演奏できる楽器はありません。'
       created_at: '作成時期'
     index:
@@ -66,7 +67,7 @@ ja:
       name: '名前'
       icon: 'アイコン'
       member: '所属'
-      instrument: '楽器'
+      instrument: '演奏楽器'
       not_instrument: '演奏できる楽器はありません。'
 
   songs:
@@ -93,6 +94,15 @@ ja:
       cover: 'カバーかオリジナルか'
       no_songs_message: '登録された曲はありません。'
 
+  requests:
+    vtuber:
+      title: 'Vtuberリクエスト投稿'
+      change_request: '歌リクエスト'
+      instruments_list: '楽器一覧'
+    song:
+      title: '歌リクエスト投稿'
+      change_request: 'Vtuberリクエスト'
+
   admin:
     sidebar:
       user: 'ユーザー'
@@ -102,6 +112,18 @@ ja:
       instrument: '楽器'
       comment: 'コメント'
       inquiry: '問い合わせ'
+
+    dashboards:
+      index:
+        category: '種類'
+        name: '名前'
+        member_name: '所属'
+        url: 'URL'
+        request_user: 'リクエストユーザー'
+        instrument: '演奏楽器'
+        created_at: '作成時期'
+      request:
+        not_instrument: '演奏できる楽器はありません。'
 
     users:
       index:
@@ -134,7 +156,7 @@ ja:
         channel_url: 'URL'
         name: '名前'
         overview: '概要'
-        instrument: '楽器'
+        instrument: '演奏楽器'
         not_instrument: '演奏できる楽器はありません。'
         created_at: '作成時期'
       new:
@@ -151,6 +173,8 @@ ja:
         title: '楽器作成'
 
     members:
+      index:
+        name: '名前'
       new:
         title: '所属作成'
 

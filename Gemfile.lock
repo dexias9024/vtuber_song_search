@@ -400,6 +400,7 @@ DEPENDENCIES
   msgpack
   pg (~> 1.1)
   puma (>= 5.0)
+  rack
   rails (~> 7.1.0)
   rails-i18n
   ransack

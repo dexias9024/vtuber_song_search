@@ -1,0 +1,23 @@
+<turbo-frame id="request_form">
+  <%= render 'shared/flash_messages' %>
+  <%= render 'shared/error_messages', object: @request %>
+  <h1><%= t('.title') %></h1>
+  <%= button_to t('.change_request'), vtuber_form_requests_path, remote: true, data: { turbo_frame: "request_form" }, class: 'btn btn-primary' %>
+  <%= form_with model: @request, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= f.text_field :category, value: "歌", readonly: true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :url %>
+      <%= f.text_field :url, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</turbo-frame>

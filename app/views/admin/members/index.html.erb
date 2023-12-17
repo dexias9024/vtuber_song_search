@@ -1,0 +1,25 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col"><%= t('.name') %></th>
+              <th scope="col"><%= link_to t('defaults.member_register'), new_admin_member_path, class: 'btn btn-primary text-center' %></th>
+            </tr>
+            </thead>
+            <tbody>
+              <%= render @members %>
+            </tbody>
+          </table>
+          <div class="item__paginate">
+            <%= paginate @members %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

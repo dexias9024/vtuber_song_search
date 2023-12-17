@@ -64,3 +64,5 @@ Python 3.11.4
 
 10/22 esbuildへの変更　sorceryを採用
 11/23 計画段階ではuser_favoritesテーブルとuser_requestsテーブルだったが問題が起きそうなのでfavoritesテーブルとrequestsテーブルに改名しました。
+
+12/9 requestsテーブルのchannel_statusだったがcategoryに変更し、timestampsを追加しました

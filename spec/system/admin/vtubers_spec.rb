@@ -30,7 +30,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_selector('label', text: 'アイコン'), 'アイコン というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '概要'), '概要 というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '所属'), '所属 というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: '楽器'), '楽器 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '演奏楽器'), '演奏楽器 というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='vtuber_channel_name']"), 'チャンネル名 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='vtuber_channel_url']"), 'URL というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -39,7 +39,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_css("label[for='vtuber_overview']"), '概要 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_select('vtuber[member_id]', options: ['選択してください'] + Member.pluck(:name)), '所属 ラベルのセレクトボックスの選択肢があることを確認してください'
       click_on '楽器一覧'
-      expect(page).to have_unchecked_field('test'), '楽器 ラベルのチェックボックスの選択肢があることを確認してください'
+      expect(page).to have_unchecked_field('test'), '演奏楽器 ラベルのチェックボックスの選択肢があることを確認してください'
     
 
       expect(page).to have_button('登録'), 'vtuberの作成用のボタンが表示されていることを確認してください'
@@ -49,7 +49,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       select 'test', from: 'vtuber[member_id]'
       click_on '登録'
 
-      expect(page).to have_content('作成されました'), '作成されましたが表示されていることを確認してください'  
+      expect(page).to have_content('作成されました'), '作成されましたが表示されていることを確認してください'
     end
 
     it '1-2.同じチャンネル名のvtuberは新規作成できない' do
@@ -62,7 +62,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_selector('label', text: 'アイコン'), 'アイコン というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '概要'), '概要 というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '所属'), '所属 というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: '楽器'), '楽器 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '演奏楽器'), '演奏楽器 というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='vtuber_channel_name']"), 'チャンネル名 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='vtuber_channel_url']"), 'URL というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -71,7 +71,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_css("label[for='vtuber_overview']"), '概要 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_select('vtuber[member_id]', options: ['選択してください'] + Member.pluck(:name)), '所属 ラベルのセレクトボックスの選択肢があることを確認してください'
       click_on '楽器一覧'
-      expect(page).to have_unchecked_field('test'), '楽器 ラベルのチェックボックスの選択肢があることを確認してください'
+      expect(page).to have_unchecked_field('test'), '演奏楽器 ラベルのチェックボックスの選択肢があることを確認してください'
 
       expect(page).to have_button('登録'), 'vtuberの作成用のボタンが表示されていることを確認してください'
 
@@ -94,7 +94,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_selector('label', text: 'アイコン'), 'アイコン というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '概要'), '概要 というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '所属'), '所属 というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: '楽器'), '楽器 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '演奏楽器'), '演奏楽器 というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='vtuber_channel_name']"), 'チャンネル名 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='vtuber_channel_url']"), 'URL というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -103,7 +103,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_css("label[for='vtuber_overview']"), '概要 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_select('vtuber[member_id]', options: ['選択してください'] + Member.pluck(:name)), '所属 ラベルのセレクトボックスの選択肢があることを確認してください'
       click_on '楽器一覧'
-      expect(page).to have_unchecked_field('test'), '楽器 ラベルのチェックボックスの選択肢があることを確認してください'
+      expect(page).to have_unchecked_field('test'), '演奏楽器 ラベルのチェックボックスの選択肢があることを確認してください'
 
       expect(page).to have_button('登録'), 'vtuberの作成用のボタンが表示されていることを確認してください'
 
@@ -124,7 +124,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_selector('label', text: 'アイコン'), 'アイコン というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '概要'), '概要 というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '所属'), '所属 というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: '楽器'), '楽器 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '演奏楽器'), '演奏楽器 というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='vtuber_channel_name']"), 'チャンネル名 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='vtuber_channel_url']"), 'URL というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -133,7 +133,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_css("label[for='vtuber_overview']"), '概要 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_select('vtuber[member_id]', options: ['選択してください'] + Member.pluck(:name)), '所属 ラベルのセレクトボックスの選択肢があることを確認してください'
       click_on '楽器一覧'
-      expect(page).to have_unchecked_field('test'), '楽器 ラベルのチェックボックスの選択肢があることを確認してください'
+      expect(page).to have_unchecked_field('test'), '演奏楽器 ラベルのチェックボックスの選択肢があることを確認してください'
 
       expect(page).to have_button('登録'), 'vtuberの作成用のボタンが表示されていることを確認してください'
 
@@ -184,7 +184,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_selector('label', text: 'アイコン'), 'アイコン というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '概要'), '概要 というラベルが表示されていることを確認してください'
       expect(page).to have_selector('label', text: '所属'), '所属 というラベルが表示されていることを確認してください'
-      expect(page).to have_selector('label', text: '楽器'), '楽器 というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: '演奏楽器'), '演奏楽器 というラベルが表示されていることを確認してください'
 
       expect(page).to have_css("label[for='vtuber_channel_name']"), 'チャンネル名 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='vtuber_channel_url']"), 'URL というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -193,14 +193,13 @@ RSpec.describe "Admin::Vtubers", type: :system do
       expect(page).to have_css("label[for='vtuber_overview']"), '概要 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_select('vtuber[member_id]', options: Member.pluck(:name)), '所属 ラベルのセレクトボックスの選択肢があることを確認してください'
       click_on '楽器一覧'
-      expect(page).to have_unchecked_field('test'), '楽器 ラベルのチェックボックスの選択肢があることを確認してください'
+      expect(page).to have_unchecked_field('test'), '演奏楽器 ラベルのチェックボックスの選択肢があることを確認してください'
 
       expect(page).to have_button('更新'), '更新用のボタンが表示されていることを確認してください'
 
       fill_in 'チャンネル名', with: 'test02'
       fill_in '名前', with: 'test02'
       select 'test', from: 'vtuber[member_id]'
-      sleep 10
 
       click_on '更新'
 

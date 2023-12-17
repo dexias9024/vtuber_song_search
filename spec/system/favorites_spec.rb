@@ -20,14 +20,26 @@ RSpec.describe "Favorites", type: :system do
       expect(page).to have_css('i.far')
     end
 
-    it '1-2.お気に入りになっていない場合青いハートボタンが表示される' do
+    it '1-2.お気に入りになっている場合青いハートボタンが表示される' do
       sleep 1
-      @favorite = create(:favorite, user: @user, song: @song)
+      #@favorite = create(:favorite, user: @user, song: @song)
       visit song_path(@song)
+      expect(page).to have_css('i.far')
+      find(".far.fa-heart").click
       expect(page).to have_css('i.fas')
     end
 
-    it '1-3.お気に入り一覧に追加できている' do
+    it '1-3.お気に入りを削除できる' do
+      sleep 1
+      visit song_path(@song)
+      expect(page).to have_css('i.far')
+      find(".far.fa-heart").click
+      expect(page).to have_css('i.fas')
+      find(".fas.fa-heart").click
+      expect(page).to have_css('i.far')
+    end
+
+    it '1-4.お気に入り一覧に追加できている' do
       sleep 1
       @favorite = create(:favorite, user: @user, song: @song)
 
@@ -36,7 +48,7 @@ RSpec.describe "Favorites", type: :system do
       expect(page).to have_text('cover')
     end
 
-    it '1-4.お気に入りがない場合お気に入り一覧に何もない' do
+    it '1-5.お気に入りがない場合お気に入り一覧に何もない' do
       sleep 1
       visit favorites_songs_path
       expect(page).to have_text('登録された曲はありません')

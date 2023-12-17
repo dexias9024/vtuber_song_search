@@ -6,7 +6,15 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+
   activerecord:
+    errors:
+      models:
+        request:
+          attributes:
+            url:
+              taken: 'このリクエストは既に投稿されています'
+
     models:
       user: 'ユーザー'
       song: '曲'
@@ -28,7 +36,7 @@ ja:
         icon: 'アイコン'
         overview: '概要'
         member: '所属'
-        instrument_id: '楽器'
+        instrument_id: '演奏楽器'
         not_instrument: '演奏できる楽器はありません。'
         instruments_list: '楽器一覧'
         created_at: '作成時期'
@@ -50,6 +58,13 @@ ja:
       comment:
         content: 'コメント'
         comment_content: 'コメント内容'
+
+      request:
+        category: 'リクエストの種類'
+        name: '名前(必須)'
+        url: '動画のURL(必須)'
+        member_name: '所属'
+        instrument_ids: '演奏楽器'
 
   users:
     update:
@@ -79,6 +94,11 @@ ja:
       success: 'お気に入り登録をしました。'
     destroy:
       success: 'お気に入りを取り消しました。'
+
+  requests:
+    create:
+      success: 'リクエストを投稿しました。'
+      fail: 'リクエストの投稿に失敗しました。'
 
   admin:
     users:
@@ -114,6 +134,10 @@ ja:
       create:
         success: '所属データを作成しました。'
         fail: '所属データの作成に失敗しました。'
+      destroy:
+        success: '所属データを削除しました。'
+        fail: '所属データの削除に失敗しました。'
+        oldest_member_error: 'この所属は削除できません'
     
     songs:
       create:

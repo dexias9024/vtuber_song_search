@@ -1,0 +1,49 @@
+<turbo-frame id="request_form">
+  <%= render 'shared/flash_messages' %>
+  <%= render 'shared/error_messages', object: @request %>
+  <h1><%= t('.title') %></h1>
+  <%= button_to t('.change_request'), song_form_requests_path, remote: true, data: { turbo_frame: "request_form" }, class: 'btn btn-primary' %>
+  <%= form_with model: @request, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= f.text_field :category, value: "Vtuber", readonly: true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :url %>
+      <%= f.text_field :url, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :member_name %>
+      <%= f.text_field :member_name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :instrument_ids, class: "control-label" %><br>
+      <button id="toggleCheckbox" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="btn btn-primary"><%= t('.instruments_list') %></span>
+      </button>
+
+      <div id="checkboxWrapper" class="checkbox-wrapper" style="display: none;">
+        <%= f.collection_check_boxes(:instrument_ids, Instrument.all, :id, :name) do |b| %>
+          <div class="checkbox-item">
+            <%= b.check_box(class: "form-control2") %>
+            <%= b.label { b.text } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="mb-3">
+      <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <script>
+    document.getElementById("toggleCheckbox").addEventListener("click", function() {
+      var checkboxWrapper = document.getElementById("checkboxWrapper");
+      checkboxWrapper.style.display = (checkboxWrapper.style.display === "none") ? "block" : "none";
+    });
+  </script>
+</turbo-frame>
