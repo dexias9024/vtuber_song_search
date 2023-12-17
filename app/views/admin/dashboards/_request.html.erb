@@ -1,0 +1,35 @@
+<tr>
+  <td>
+    <%= request.id %>
+  </td>
+  <td>
+    <% if request.category == 'Vtuber' %>
+      Vtuber
+    <% else %>
+      歌
+    <% end %>
+  </td>
+  <td>
+    <%= request.name %>
+  </td>
+  <td>
+    <%= request.member_name %>
+  </td>
+  <td>
+    <%= request.url %><br>
+    <%= image_tag "https://img.youtube.com/vi/#{youtube_id_from_url(request.url)}/maxresdefault.jpg", width: 150, height: 100, alt: 'Video Thumbnail' %>
+  </td>
+  <td>
+    <% if request.instruments.any? %>
+      <%= request.instruments.map(&:name).join(', ') %>
+    <% else %>
+      <%= t('.not_instrument') %>
+    <% end %>
+  </td>
+  <td>
+    <%= request.user.name %>
+  </td>
+  <td>
+    <%= l request.created_at, format: :long %>
+  </td>
+</tr>

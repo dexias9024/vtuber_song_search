@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[index show edit update destroy]
     resources :vtubers, only: %i[new create index show edit update destroy]
     resources :instruments, only: %i[new create]
-    resources :members, only: %i[new create]
+    resources :members, only: %i[new create index destroy]
     resources :songs, only: %i[new create index show edit update destroy]
     resources :comments, only: %i[index destroy]
   end
@@ -27,11 +27,14 @@ Rails.application.routes.draw do
       get :favorites
     end
   end
-  get '/youtube_api', to: 'youtube_api#main'
+  resources :requests, only: %i[new create] do
+    collection do
+      post 'vtuber_form'
+      post 'song_form'
+    end
+  end
   
   resources :inqueries
-  get '/request', to: 'requests#new'
-  post '/request', to: 'requests#create'
 
   get '/about', to: 'guide#about'
   get '/terms', to: 'guide#terms'

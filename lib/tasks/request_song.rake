@@ -4,38 +4,40 @@ namespace :request_song do
   desc 'Request song'
   task run: :environment do
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
-    youtube.key = ENV['API_KEY']
+    youtube.key = ENV['YOUTUBE_API_KEY']
     
-    song_id = 'JRYdJA-QsVI'
-    @video_info = youtube.list_videos('snippet', id: song_id).items.first.snippet
-    vtuber_id = @video_info.channel_id
-    match_name = @video_info.channel_title
+    requests = Request.where(category: Request.categories['歌']).limit(20)
 
-    @vtuber_info = youtube.list_channels('snippet', id: vtuber_id).items.first
-    vtuber = Vtuber.find_by(channel_name: @vtuber_info.snippet.title)
+    requests.each do |request|
+      song_id = youtube_id_from_url(request.url)
+      video_info = youtube.list_videos('snippet', id: song_id).items.first&.snippet
+      match_name = video_info.channel_title
 
-    unless vtuber
-      return
-    end
+      vtuber = Vtuber.find_by(channel_name: video_info.channel_title)
 
-    @music_videos = youtube.list_searches('snippet', type: 'video', channel_id: vtuber_id, video_category_id: 10, max_results: 5).items
+      unless vtuber
+        request.destroy
+        next
+      end
 
-    existing_song_urls = Song.where(vtuber_id: vtuber.id).pluck(:video_url) if vtuber
-    existing_song_ids = existing_song_urls.map { |video_url| youtube_id_from_url(video_url)} 
+      existing_song_urls = Song.where(vtuber_id: vtuber.id).pluck(:video_url) if vtuber
+      existing_song_ids = existing_song_urls.map { |url| youtube_id_from_url(url) }
 
-    @music_videos.each do |video|
-      video_id = video.id.video_id
-      next if existing_song_ids.include?(video_id)
-      artist = original_song_artist(get_artist_name(video.snippet.title))
+      if existing_song_ids.include?(song_id)
+        request.destroy
+        next
+      end
+      artist = original_song_artist(get_artist_name(video_info.title))
 
       Song.create!(
-        title: video.snippet.title,
-        cover: cover_or_original(video.snippet.title),
-        name: get_song_name(video.snippet.title),
-        artist_name: artist,
-        vtuber_id: match_vtuber(match_name),
-        video_url: "https://www.youtube.com/watch?v=#{video_id}"
+            title: video_info.title,
+            cover: cover_or_original(video_info.title),
+            name: get_song_name(video_info.title),
+            artist_name: artist,
+            vtuber_id: match_vtuber(match_name),
+            video_url: "https://www.youtube.com/watch?v=#{song_id}"
       )
+      request.destroy
     end
   end
 end

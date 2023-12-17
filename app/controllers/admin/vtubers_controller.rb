@@ -1,7 +1,7 @@
 class Admin::VtubersController < Admin::BaseController
   before_action :set_vtuber, only: %i[show edit update destroy]
-  before_action :set_members, only: %i[new show edit update]
-  before_action :set_instruments, only: %i[new show edit update destroy]
+  before_action :set_members, only: %i[new edit]
+  before_action :set_instruments, only: %i[new edit]
   
   def new
     @vtuber = Vtuber.new

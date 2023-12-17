@@ -9,5 +9,9 @@ FactoryBot.define do
       instruments = create(:instrument)
       vtuber.instruments << instruments
     end
+
+    trait :request do
+      channel_name { '戌亥とこ -Inui Toko-' }
+    end
   end
 end

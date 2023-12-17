@@ -1,0 +1,11 @@
+<tr>
+  <td>
+    <%= member.id %>
+  </td>
+  <td>
+    <%= member.name %>
+  </td>
+  <td class="d-flex">
+    <%= button_to t('defaults.delete'), admin_member_path(member), method: :delete, data: { turbo_confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+  </td>
+</tr>

@@ -1,34 +1,28 @@
-<section class="content">
+<div class="content">
   <div class="container-fluid">
-
-    <!-- Timelime example  -->
     <div class="row">
-      <div class="col-md-12">
-        <!-- The time line -->
-        <div class="timeline">
-        <% if @requests.any? %>
-          <% @requests.each do |request| %>
-            <div>
-              <i class="fas fa-envelope bg-blue"></i>
-              <div class="timeline-item">
-                <span class="time"><i class="fas fa-clock"></i> <%= request.created_at.strftime('%H:%M') %></span>
-                <h3 class="timeline-header"><a href="#"><%= request.sender.name %></a> sent you a request</h3>
-                <div class="timeline-body">
-                  <%= request.message %>
-                </div>
-                <div class="timeline-footer">
-                  <%= link_to t('defaults.show'), admin_request_path(request), class: 'btn btn-primary btn-sm' %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% else %>
-          <p>リクエストはありません</p>
-        <% end %>
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col"><%= t('.category') %></th>
+              <th scope="col"><%= t('.name') %></th>
+              <th scope="col"><%= t('.member_name') %></th>
+              <th scope="col"><%= t('.url') %></th>
+              <th scope="col"><%= t('.instrument') %></th>
+              <th scope="col"><%= t('.request_user') %></th>
+              <th scope="col"><%= t('.created_at') %></th>
+            </tr>
+            </thead>
+            <tbody>
+              <%= render partial: 'admin/dashboards/request', collection: @vtuber_requests %>
+              <%= render partial: 'admin/dashboards/request', collection: @song_requests %>
+            </tbody>
+          </table>
         </div>
       </div>
-      <!-- /.col -->
     </div>
   </div>
-  <!-- /.timeline -->
-</section>
+</div>
