@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <div class="d-flex">
+        <%= button_to t('.close'), close_admin_inquiry_path(@inquiry), method: :post, data: { turbo_confirm: t('defaults.message.close_confirm') }, class: 'btn btn-success' %>
+        <%= button_to t('defaults.delete'), admin_inquiry_path(@inquiry), method: :delete, data: { turbo_confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+      </div>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row">Id</th>
+          <td><%= @inquiry.id %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.name') %></th>
+          <td><%= @inquiry.name %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.email') %></th>
+          <td><%= @inquiry.email %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.content') %></th>
+          <td><%= @inquiry.content %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.created_at') %></th>
+          <td><%= l @inquiry.created_at, format: :long %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= t('.closed_at') %></th>
+          <td>
+            <% if @inquiry.closed_at %>
+              <%= l @inquiry.closed_at, format: :long %>
+            <% else %>
+              <%= t('.not_closed_at') %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -22,13 +22,14 @@ ja:
       not_authorized: '権限がありません'
       fovirites: 'お気に入りに登録しました'
       not_fovirites: 'お気に入りから外しました'
+      close_confirm: '解決済みにしますか？'
 
   footer:
     request: 'Vtuber・曲リクエスト'
     about: 'このアプリについて'
     terms: '利用規約'
     privacy_policy: 'プライバシーポリシー'
-    inquery: 'お問合せ'
+    inquiry: 'お問合せ'
 
   users:
     show:
@@ -102,6 +103,10 @@ ja:
     song:
       title: '歌リクエスト投稿'
       change_request: 'Vtuberリクエスト'
+
+  inquiries:
+    new:
+      title: 'お問合せフォーム'
 
   admin:
     sidebar:
@@ -207,3 +212,22 @@ ja:
         user_id: 'ユーザーID'
         user_name: 'ユーザー名'
         created_at: '作成時期'
+
+    inquiries:
+      index:
+        name: 'お問合せ者'
+        email: 'メールアドレス'
+        content: '内容'
+        created_at: '作成時期'
+        closed_at: '解決状態'
+        close: '解決済みにする'
+      show:
+        title: 'お問合せ詳細'
+        name: 'お問合せ者'
+        email: 'メールアドレス'
+        content: '内容'
+        created_at: '作成時期'
+        closed_at: '解決状態'
+        not_closed_at: '未解決'
+      inquiry:
+        not_closed_at: '未解決'

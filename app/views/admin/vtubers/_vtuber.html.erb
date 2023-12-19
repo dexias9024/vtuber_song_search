@@ -12,7 +12,7 @@
     <%= vtuber.name %>
   </td>
   <td>
-    <%# = image_tag vtuber.icon, class: 'brand-image img-circle elevation-3', style: 'width: 50px; height: 50px;' %>
+    <%= image_tag vtuber.icon, class: 'brand-image img-circle elevation-3', style: 'width: 50px; height: 50px;' %>
   </td>
   <td>
     <%= l vtuber.created_at, format: :long %>
