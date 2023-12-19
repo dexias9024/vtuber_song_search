@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resources :members, only: %i[new create index destroy]
     resources :songs, only: %i[new create index show edit update destroy]
     resources :comments, only: %i[index destroy]
+    resources :inquiries, only: %i[index show destroy] do
+      member do
+        post :close
+      end
+    end
   end
 
   root 'guide#about'
@@ -34,7 +39,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :inqueries
+  resources :inquiries, only: %i[new create]
 
   get '/about', to: 'guide#about'
   get '/terms', to: 'guide#terms'

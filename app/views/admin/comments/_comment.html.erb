@@ -3,7 +3,7 @@
     <%= comment.id %>
   </td>
   <td>
-    <%= comment.content %>
+    <%= truncate(comment.content, length: 20) %>
   </td>
   <td>
     <%= comment.song.name %>

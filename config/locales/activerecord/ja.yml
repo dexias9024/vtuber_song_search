@@ -66,6 +66,11 @@ ja:
         member_name: '所属'
         instrument_ids: '演奏楽器'
 
+      inquiry:
+        name: '名前(必須)'
+        email: 'メールアドレス(必須)'
+        content: 'お問合せ内容'
+
   users:
     update:
       success: "ユーザー情報が正常に更新されました。"
@@ -99,6 +104,11 @@ ja:
     create:
       success: 'リクエストを投稿しました。'
       fail: 'リクエストの投稿に失敗しました。'
+
+  inquiries:
+    create:
+      success: 'お問合せを投稿しました。'
+      fail: 'お問合せの投稿に失敗しました。'
 
   admin:
     users:
@@ -154,3 +164,11 @@ ja:
       destroy:
         success: 'コメントを削除しました。'
         fail: 'コメントの削除に失敗しました。'
+
+    inquiries:
+      close:
+        closed_successfully: 'お問合せをクローズにしました。'
+        fail: 'お問合せをクローズするのに失敗しました。'
+      destroy:
+        success: 'お問合せを削除しました。'
+        fail: 'お問合せの削除に失敗しました。'
