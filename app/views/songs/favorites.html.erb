@@ -2,6 +2,9 @@
   <div class="row">
     <div class="mt-3">
       <h1><%= t('.title') %></h1>
+      <div class="col-md-8 offset-md-4 col-lg-6 offset-lg-4 ms-auto">
+        <%= render 'layouts/search_form', url: favorites_songs_path %>
+      </div>
       <% if @favorites.present? %>
         <table class="table table-striped">
           <thead>
@@ -13,16 +16,16 @@
             </tr>
           </thead>
           <tbody>
-            <% @favorites.each do |favorite| %>
+            <% @favorites.each do |favorite_song| %>
               <tr>
                 <td>
-                  <%= link_to song_path(favorite.song) do %>
-                    <%= image_tag "https://img.youtube.com/vi/#{favorite.song.youtube_id_from_url}/maxresdefault.jpg", width: 200, height: 120, alt: 'Video Thumbnail' %>
+                  <%= link_to song_path(favorite_song) do %>
+                    <%= image_tag "https://img.youtube.com/vi/#{favorite_song.youtube_id_from_url}/maxresdefault.jpg", width: 200, height: 120, alt: 'Video Thumbnail' %>
                   <% end %>
                 </td>
-                <td><%= favorite.song.title %></td>
-                <td><%= favorite.song.artist_name %></td>
-                <td><%= favorite.song.cover %></td>
+                <td><%= favorite_song.title %></td>
+                <td><%= favorite_song.artist_name %></td>
+                <td><%= favorite_song.cover %></td>
               </tr>
             <% end %>
           </tbody>

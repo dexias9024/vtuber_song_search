@@ -19,4 +19,17 @@ RSpec.describe 'comment', type: :model do
       expect(comment.errors[:content]).to include("は5000文字以内で入力してください")
     end
   end
+  
+  describe 'commentの検索' do
+    it '2-1.検索結果に一致するものだけ取得する' do
+      comment1 = create(:comment, content: 'test1')
+      comment2 = create(:comment, content: 'test2')
+
+      search_params = { content_cont: 'test1' }
+      results = Comment.ransack(search_params).result
+
+      expect(results).to include(comment1)
+      expect(results).not_to include(comment2)
+    end
+  end
 end

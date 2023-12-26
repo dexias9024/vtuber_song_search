@@ -19,7 +19,8 @@ class Admin::VtubersController < Admin::BaseController
   end
 
   def index
-    @vtubers = Vtuber.all.order(created_at: :desc).page(params[:page])
+    @q = Vtuber.ransack(params[:q])
+    @vtubers = @q.result.order(created_at: :desc).page(params[:page])
   end
 
   def show; end

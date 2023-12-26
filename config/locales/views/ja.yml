@@ -13,6 +13,7 @@ ja:
     vtuber_register: 'Vtuber登録'
     song_register: '曲登録'
     member_register: '所属登録'
+    search_word: '検索ワードを入力してください'
 
 
     message:
@@ -61,6 +62,13 @@ ja:
       instrument: '演奏楽器'
       not_instrument: '演奏できる楽器はありません。'
       created_at: '作成時期'
+      
+      video_title: '動画名'
+      thumbnail: 'サムネイル'
+      artist_name: '歌唱Vtuber'
+      cover: 'カバーかオリジナルか'
+      no_songs_message: '登録された曲はありません。'
+      
     index:
       title: 'Vtuber一覧'
       channel_name: 'チャンネル名'
@@ -83,6 +91,7 @@ ja:
       video_title: '動画名'
       video_url: 'URL'
       artist_name: '歌唱Vtuber'
+      channel_name: 'チャンネル名'
       cover: 'カバーかオリジナルか'
       comments: 'コメント欄'
       no_comment: 'コメントはありません'
@@ -188,6 +197,7 @@ ja:
         title: '曲一覧'
         video_title: '動画名'
         thumbnail: 'サムネイル'
+        name: '曲名'
         artist_name: '歌唱Vtuber'
         no_songs_message: '登録された曲はありません。'
         created_at: '作成時期'
@@ -208,7 +218,7 @@ ja:
     comments:
       index:
         content: 'コメント'
-        song_name: '曲名'
+        song_name: '動画名'
         user_id: 'ユーザーID'
         user_name: 'ユーザー名'
         created_at: '作成時期'

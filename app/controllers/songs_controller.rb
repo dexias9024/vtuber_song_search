@@ -1,6 +1,7 @@
 class SongsController < ApplicationController
   def index
-    @songs = Song.all.includes(:vtuber).order(created_at: :desc).page(params[:page])
+    @q = Song.ransack(params[:q])
+    @songs = @q.result.includes(:vtuber).order("RANDOM()").page(params[:page])
   end
 
   def show
@@ -10,6 +11,8 @@ class SongsController < ApplicationController
   end
 
   def favorites
-    @favorites = current_user.favorites.includes(:song).order(created_at: :desc).page(params[:page])
+    song_ids = current_user.favorites.pluck(:song_id)
+    @q = Song.where(id: song_ids).ransack(params[:q])
+    @favorites = @q.result.includes(:favorites).order(created_at: :desc).page(params[:page])
   end
 end

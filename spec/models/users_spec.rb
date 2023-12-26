@@ -58,4 +58,17 @@ RSpec.describe 'User', type: :model do
       expect(user.errors[:email]).to include("は100文字以内で入力してください")
     end
   end
+
+  describe 'userの検索' do
+    it '2-1.検索結果に一致するものだけ取得する' do
+      user1 = create(:user, name: 'test1')
+      user2 = create(:user, name: 'test2')
+
+      search_params = { name_cont: 'test1' }
+      results = User.ransack(search_params).result
+
+      expect(results).to include(user1)
+      expect(results).not_to include(user2)
+    end
+  end
 end
