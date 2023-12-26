@@ -24,6 +24,10 @@
             <td><%= @song.artist_name %></td>
           </tr>
           <tr>
+            <th scope="row"><%= t('.channel_name') %></th>
+            <td><%= link_to @song.vtuber.channel_name, vtuber_path(@song.vtuber) %></td>
+          </tr>
+          <tr>
             <th scope="row"><%= t('.cover') %></th>
             <td><%= @song.cover %></td>
           </tr>

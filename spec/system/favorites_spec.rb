@@ -22,7 +22,7 @@ RSpec.describe "Favorites", type: :system do
 
     it '1-2.お気に入りになっている場合青いハートボタンが表示される' do
       sleep 1
-      #@favorite = create(:favorite, user: @user, song: @song)
+
       visit song_path(@song)
       expect(page).to have_css('i.far')
       find(".far.fa-heart").click

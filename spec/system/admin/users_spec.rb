@@ -70,4 +70,40 @@ RSpec.describe "Admin::Users", type: :system do
       expect(page).not_to have_content(other_user.name), '他人の投稿を削除した直後の画面に、削除した情報が表示されていないことを確認してください'
     end
   end
+
+  describe 'Userの検索' do
+    before do
+      admin_user = create(:user, :admin)
+
+      visit '/admin'
+
+      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
+
+      expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+
+      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+
+      fill_in 'Email', with: admin_user.email
+      fill_in 'Password', with: 'password'
+      click_button 'ログイン'
+    end
+
+    it '4-1.user情報を検索できる' do
+      user1 = create(:user, name: 'test1')
+      user2 = create(:user, name: 'test2')
+
+      visit admin_users_path
+
+      expect(page).to have_css('.btn-primary .fas.fa-search'), 'user検索用のボタンが表示されていることを確認してください'
+
+      find_field('q[name_cont]').set('test1')
+      find('.btn-primary .fas.fa-search').click
+
+      sleep 1
+      expect(page).to have_content(user1.name), '検索結果が表示されていることを確認してください'
+      expect(page).not_to have_content(user2.name), '検索していないものが表示されていないことを確認してください'
+    end
+  end
 end

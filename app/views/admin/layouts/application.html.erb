@@ -13,17 +13,17 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <%= render 'admin/shared/header' %>
-  <%= render 'admin/shared/sidebar' %>
+  <%= render 'admin/layouts/header' %>
+  <%= render 'admin/layouts/sidebar' %>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <%= render 'shared/flash_messages' %>
+    <%= render 'layouts/flash_messages' %>
     <%= yield %>
   </div>
   <!-- /.content-wrapper -->
 
-  <%= render 'admin/shared/footer' %>
+  <%= render 'admin/layouts/footer' %>
 
 </div>
 <%= javascript_include_tag 'admin' %>

@@ -6,4 +6,12 @@ class Vtuber < ApplicationRecord
 
   validates :channel_name, presence: true, uniqueness: true
   validates :channel_url, presence: true, uniqueness: true
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[vtuber_instruments]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[channel_name name]
+  end
 end

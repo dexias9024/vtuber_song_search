@@ -18,7 +18,8 @@ class Admin::SongsController < Admin::BaseController
   end
 
   def index
-    @songs = Song.all.includes(:vtuber).order(created_at: :desc).page(params[:page])
+    @q = Song.ransack(params[:q])
+    @songs = @q.result.includes(:vtuber).order(created_at: :desc).page(params[:page])
   end
 
   def show; end

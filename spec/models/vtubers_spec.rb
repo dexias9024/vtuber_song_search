@@ -45,4 +45,17 @@ RSpec.describe 'Vtuber', type: :model do
       expect(vtuber2.errors[:channel_url]).to include("はすでに存在します")
     end
   end
+
+  describe 'vtuberの検索' do
+    it '2-1.検索結果に一致するものだけ取得する' do
+      vtuber1 = create(:vtuber, channel_name: 'test1')
+      vtuber2 = create(:vtuber, channel_name: 'test2')
+
+      search_params = { channel_name_or_name_cont: 'test1' }
+      results = Vtuber.ransack(search_params).result
+
+      expect(results).to include(vtuber1)
+      expect(results).not_to include(vtuber2)
+    end
+  end
 end

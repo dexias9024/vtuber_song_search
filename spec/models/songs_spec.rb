@@ -31,7 +31,7 @@ RSpec.describe 'Song', type: :model do
       expect(song.errors[:vtuber]).to include("を入力してください")
     end
 
-    it "1-6.重複した動画URLの場合、無効である" do
+    it '1-6.重複した動画URLの場合、無効である' do
       vtuber = FactoryBot.create(:vtuber, name: 'test')
       song1 = FactoryBot.create(:song, video_url: 'https://www.youtube.com/test', vtuber: vtuber)
       song2 = Song.build(title: 'test', 
@@ -41,6 +41,19 @@ RSpec.describe 'Song', type: :model do
                         )
       song2.valid?
       expect(song2.errors[:video_url]).to include("はすでに存在します")
+    end
+  end
+
+  describe 'songの検索' do
+    it '2-1.検索結果に一致するものだけ取得する' do
+      song1 = create(:song, title: 'test1')
+      song2 = create(:song, title: 'test2')
+
+      search_params = { title_or_name_or_artist_name_or_vtuber_name_cont: 'test1' }
+      results = Song.ransack(search_params).result
+
+      expect(results).to include(song1)
+      expect(results).not_to include(song2)
     end
   end
 end

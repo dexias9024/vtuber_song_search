@@ -57,14 +57,15 @@ namespace :request_vtuber do
       if vtuber.save
         songs_to_create = music_videos.reject do |video|
           existing_song_ids.include?(video.id.video_id) || video.snippet.title.downcase.include?('歌枠') || 
-                                                          video.snippet.title.downcase.include?('弾き語り')
+                                                          video.snippet.title.downcase.include?('弾き語り') || 
+                                                          video.snippet.title.downcase.include?('歌配信')
         end.map do |video|
           artist = original_song_artist(get_artist_name(video.snippet.title))
           {
             title: video.snippet.title,
             cover: cover_or_original(video.snippet.title),
             name: get_song_name(video.snippet.title),
-            artist_name: artist,
+            artist_name: title_shorts?(artist, vtuber),
             vtuber_id: match_vtuber(match_name),
             video_url: "https://www.youtube.com/watch?v=#{video.id.video_id}"
           }
@@ -98,18 +99,24 @@ end
 
 def get_artist_name(name)
   match = name.match(/(?:Covered\s+by|&#8203;``【oaicite:4】``&#8203;)\s*(.*?)(?:【|$)/i)
-
-  match ? match[1] : name
+  if match.nil?
+    result = name
+  else
+    matched_part = match[1]
+    result = matched_part.gsub(/[|【|】|]/, '').strip
+  end
+  result
 end
 
 def original_song_artist(name)
   if name.length >= 10
     right_part = name.split(/\/|／/).last
     right_part.sub!(/[\(,{,【].*/, '')
+    right_part.sub!(/[|【|】|]/, '')
 
-    return get_artist_name(right_part)
+    right_part
   else
-    return name
+    name
   end
 end
 
@@ -124,5 +131,13 @@ def cover_or_original(title)
     'original'
   else
     'cover'
+  end
+end
+
+def title_shorts?(title, vtuber)
+  if title.downcase.include?('shorts') || title.downcase.include?('踊ってみた')
+    vtuber.name
+  else
+    get_song_name(title)
   end
 end

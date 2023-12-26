@@ -3,7 +3,8 @@ class Admin::UsersController < Admin::BaseController
   before_action :check_owner, only: %i[show edit update destroy]
   
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result.order(created_at: :desc).page(params[:page])
   end
 
   def show; end

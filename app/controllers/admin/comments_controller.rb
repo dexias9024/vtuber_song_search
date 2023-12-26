@@ -1,6 +1,7 @@
 class Admin::CommentsController < Admin::BaseController
   def index
-    @comments = Comment.all.includes(:song).order(created_at: :desc).page(params[:page])
+    @q = Comment.ransack(params[:q])
+    @comments = @q.result.includes(:song).order(created_at: :desc).page(params[:page])
   end
 
   def destroy

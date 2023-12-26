@@ -4,7 +4,7 @@
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
         <table class="table table-bordered bg-white">
           <tr>
-            <th scope="row"><%= t('.channel_name') %></th>
+            <th scope="row" style="width: 120px;"><%= t('.channel_name') %></th>
             <td><%= @vtuber.channel_name %></td>
           </tr>
           <tr>
@@ -47,6 +47,30 @@
             </td>
           </tr>
         </table>
+
+        <div class="ms-auto">
+          <%= render 'layouts/search_form', url: vtuber_path(@vtuber) %>
+        </div>
+        <% if @songs.present? %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col"><%= t('.thumbnail') %></th>
+                <th scope="col"><%= t('.video_title') %></th>
+                <th scope="col"><%= t('.artist_name') %></th>
+                <th scope="col"><%= t('.cover') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @songs %>
+            </tbody>
+          </table>
+          <div class="item__paginate">
+            <%= paginate @songs %>
+          </div>
+        <% else %>
+          <%= t('.no_songs_message') %>
+        <% end %>
       </div>
     </div>
   </div>
