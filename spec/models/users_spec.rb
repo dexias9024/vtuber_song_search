@@ -64,8 +64,7 @@ RSpec.describe 'User', type: :model do
       user1 = create(:user, name: 'test1')
       user2 = create(:user, name: 'test2')
 
-      search_params = 'test1'
-      results = User.search_by_name(search_params)
+      results = User.search_by_name('test1')
 
       expect(results).to include(user1)
       expect(results).not_to include(user2)
