@@ -18,8 +18,28 @@ class Admin::SongsController < Admin::BaseController
   end
 
   def index
-    @q = Song.ransack(params[:q])
-    @songs = @q.result.includes(:vtuber).order(created_at: :desc).page(params[:page])
+    if search_params[:search].present?
+      key_words = search_params[:search].split(/[\p{blank}\s]+/)
+      hiragana = key_words.map { |word| word.tr('ァ-ン', 'ぁ-ん') }
+      katakana = key_words.map { |word| word.tr('ぁ-ん', 'ァ-ン') }
+      if search_params[:cover_eq].present?
+        hiragana_songs = Song.search_by_title_name_artist(hiragana).search_by_cover(search_params[:cover_eq]).order(created_at: :desc)
+        katakana_songs = Song.search_by_title_name_artist(katakana).search_by_cover(search_params[:cover_eq]).order(created_at: :desc)
+        result_songs = (hiragana_songs + katakana_songs).uniq
+      else
+        hiragana_songs = Song.search_by_title_name_artist(hiragana).order(created_at: :desc)
+        katakana_songs = Song.search_by_title_name_artist(katakana).order(created_at: :desc)
+        result_songs = (hiragana_songs + katakana_songs).uniq
+      end
+      @songs = Kaminari.paginate_array(result_songs).page(params[:page]).per(20)
+    else
+      if search_params[:cover_eq].present?
+        result_songs = Song.search_by_cover(search_params[:cover_eq]).order("RANDOM()").page(params[:page])
+        @songs = result_songs
+      else
+        @songs = Song.all.order("RANDOM()").page(params[:page])
+      end
+    end
   end
 
   def show; end
@@ -52,5 +72,9 @@ class Admin::SongsController < Admin::BaseController
 
   def song_params
     params.require(:song).permit(:title, :cover, :name, :artist_name, :vtuber_id, :video_url)
+  end
+
+  def search_params
+    params.permit(:search, :title, :name, :artist_name, :cover_eq, :cover)
   end
 end

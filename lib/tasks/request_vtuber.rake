@@ -81,7 +81,7 @@ end
 def title_vtuber_name(title)
   split_result = title.split(/#{Regexp.escape("ch.")}/i, 2)[1]&.strip
   split_result = split_result ? split_result&.split(/[-\[\{「【『]/)[0]&.strip : title
-  name = split_result&.split(/[-\/／]/).first
+  name = split_result&.split(/[-\/／]/).first.strip
   name
 end
 
@@ -94,7 +94,7 @@ def get_song_name(name)
   pattern = /([^\-\/\／【『』]+)(?:\s*[\-\/\／【『』]\s*Covered\s+by)?/i 
   match = name.match(pattern)
 
-  match ? match[1] || '' : ''
+  match ? match[1]&.strip || '' : ''
 end
 
 def get_artist_name(name)
@@ -102,8 +102,8 @@ def get_artist_name(name)
   if match.nil?
     result = name
   else
-    matched_part = match[1]
-    result = matched_part.gsub(/[|【|】|]/, '').strip
+    matched_part = match[1].strip
+    result = matched_part.gsub(/[|【|】|]/, '')
   end
   result
 end
@@ -114,7 +114,7 @@ def original_song_artist(name)
     right_part.sub!(/[\(,{,【].*/, '')
     right_part.sub!(/[|【|】|]/, '')
 
-    right_part
+    right_part.strip
   else
     name
   end

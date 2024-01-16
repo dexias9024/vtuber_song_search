@@ -46,7 +46,7 @@ def get_song_name(name)
   pattern = /([^\-\/\／【『』]+)(?:\s*[\-\/\／【『』]\s*Covered\s+by)?/i 
   match = name.match(pattern)
 
-  match ? match[1] || '' : ''
+  match ? match[1]&.strip || '' : ''
 end
 
 def get_artist_name(name)
@@ -54,7 +54,7 @@ def get_artist_name(name)
   if match.nil?
     result = name
   else
-    matched_part = match[1]
+    matched_part = match[1].strip
     result = matched_part.gsub(/[|【|】|]/, '').strip
   end
   result
@@ -66,7 +66,7 @@ def original_song_artist(name)
     right_part.sub!(/[\(,{,【].*/, '')
     right_part.sub!(/[|【|】|]/, '')
 
-    right_part
+    right_part.strip
   else
     name
   end

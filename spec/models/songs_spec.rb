@@ -49,8 +49,8 @@ RSpec.describe 'Song', type: :model do
       song1 = create(:song, title: 'test1')
       song2 = create(:song, title: 'test2')
 
-      search_params = { title_or_name_or_artist_name_or_vtuber_name_cont: 'test1' }
-      results = Song.ransack(search_params).result
+      search_params = ['test1']
+      results = Song.search_by_title_name_artist(search_params)
 
       expect(results).to include(song1)
       expect(results).not_to include(song2)

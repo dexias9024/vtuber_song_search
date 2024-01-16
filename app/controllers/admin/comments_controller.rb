@@ -1,7 +1,16 @@
 class Admin::CommentsController < Admin::BaseController
   def index
-    @q = Comment.ransack(params[:q])
-    @comments = @q.result.includes(:song).order(created_at: :desc).page(params[:page])
+    if search_params[:search].present?
+      hiragana = search_params[:search].tr('ァ-ン', 'ぁ-ん')
+      katakana = search_params[:search].tr('ぁ-ん', 'ァ-ン')
+
+      hiragana_comments = Comment.search_comments(hiragana).order(created_at: :desc)
+      katakana_comments = Comment.search_comments(katakana).order(created_at: :desc)
+      result_comments = (hiragana_comments + katakana_comments).uniq
+      @comments = Kaminari.paginate_array(result_comments).page(params[:page]).per(20)
+    else
+      @comments = Comment.all.order(created_at: :desc).page(params[:page])
+    end
   end
 
   def destroy
@@ -18,7 +27,7 @@ class Admin::CommentsController < Admin::BaseController
 
   private
 
-  def comment_params
-    params.require(:comment).permit(:content).merge(song_id: params[:song_id])
+  def search_params
+    params.permit(:search, { user: [:name] }, { song: [:title] })
   end
 end

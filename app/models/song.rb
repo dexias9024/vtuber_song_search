@@ -16,11 +16,20 @@ class Song < ApplicationRecord
     match_data[5] if match_data
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    %w[vtuber]
-  end
+  scope :search_by_title_name_artist, ->(key_words) {
+    conditions = key_words.map { |word| "(title ILIKE ? OR name ILIKE ? OR artist_name ILIKE ?)" }.join(' AND ')
+    where(conditions, *Array.new(key_words.size * 3) { |i| "%#{key_words[i / 3]}%" })
+  }
 
-  def self.ransackable_attributes(auth_object = nil)
-    super + %w[title name artist_name cover]
-  end
+  scope :search_by_name, ->(key_words) {
+    where("LOWER(name) LIKE :q", q: "#{key_words.downcase}%")
+  }
+
+  scope :search_by_artist, ->(key_words) {
+    where("LOWER(artist_name) LIKE :q", q: "#{key_words.downcase}%")
+  }
+
+  scope :search_by_cover, ->(cover) {
+    where(cover: cover)
+  }
 end

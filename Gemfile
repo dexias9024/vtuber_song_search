@@ -30,7 +30,6 @@ gem "cssbundling-rails"
 gem "jbuilder"
 
 gem 'rack'
-gem 'ransack'
 gem 'bootstrap'
 gem 'font-awesome-sass'
 gem 'kaminari'

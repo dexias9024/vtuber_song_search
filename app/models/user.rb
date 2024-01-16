@@ -25,11 +25,7 @@ class User < ApplicationRecord
     favorites.exists?(song: song)
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    %w[]
-  end
-
-  def self.ransackable_attributes(auth_object = nil)
-    %w[name]
-  end
+  scope :search_by_name, ->(key_words) {
+    where("lower(name) LIKE ?", "#{key_words.downcase}%")
+  }
 end

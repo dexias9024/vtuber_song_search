@@ -3,8 +3,17 @@ class Admin::UsersController < Admin::BaseController
   before_action :check_owner, only: %i[show edit update destroy]
   
   def index
-    @q = User.ransack(params[:q])
-    @users = @q.result.order(created_at: :desc).page(params[:page])
+    if search_params[:search].present?
+      hiragana = search_params[:search].tr('ァ-ン', 'ぁ-ん')
+      katakana = search_params[:search].tr('ぁ-ん', 'ァ-ン')
+
+      hiragana_users = User.search_by_name(hiragana).order(created_at: :desc)
+      katakana_users = User.search_by_name(katakana).order(created_at: :desc)
+      result_users = (hiragana_users + katakana_users).uniq
+      @users = Kaminari.paginate_array(result_users).page(params[:page]).per(20)
+    else
+      @users = User.all.order(created_at: :desc).page(params[:page])
+    end
   end
 
   def show; end
@@ -39,5 +48,9 @@ class Admin::UsersController < Admin::BaseController
     return unless @user == current_user
 
     redirect_to admin_root_path
+  end
+
+  def search_params
+    params.permit(:search, :name)
   end
 end

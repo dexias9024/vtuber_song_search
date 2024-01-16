@@ -3,16 +3,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="table-responsive">
-          <%= search_form_for @q, url: admin_vtubers_path do |f| %>
-            <div class="input-group-custom mb-3">
-              <%= f.search_field :channel_name_or_name_cont, class: 'form-control', placeholder: t('defaults.search_word') %>
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-primary">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-            </div>
-          <% end %>
+          <%= render 'admin/layouts/search_form', url: admin_vtubers_path %>
           <table class="table table-striped">
             <thead>
             <tr>
