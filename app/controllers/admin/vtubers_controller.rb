@@ -19,8 +19,18 @@ class Admin::VtubersController < Admin::BaseController
   end
 
   def index
-    @q = Vtuber.ransack(params[:q])
-    @vtubers = @q.result.order(created_at: :desc).page(params[:page])
+    if search_params[:search].present?
+      key_words = search_params[:search].split(/[\p{blank}\s]+/)
+      hiragana = key_words.map { |word| word.tr('ァ-ン', 'ぁ-ん') }
+      katakana = key_words.map { |word| word.tr('ぁ-ん', 'ァ-ン') }
+
+      hiragana_vtubers = Vtuber.search_by_name_channel_name(hiragana).order(created_at: :desc)
+      katakana_vtubers = Vtuber.search_by_name_channel_name(katakana).order(created_at: :desc)
+      result_vtubers = (hiragana_vtubers + katakana_vtubers).uniq
+      @vtubers = Kaminari.paginate_array(result_vtubers).page(params[:page]).per(20)
+    else
+      @vtubers = Vtuber.all.order(created_at: :desc).page(params[:page])
+    end
   end
 
   def show; end
@@ -57,5 +67,9 @@ class Admin::VtubersController < Admin::BaseController
 
   def vtuber_params
     params.require(:vtuber).permit(:channel_name, :channel_url, :name, :icon, :overview, :member_id, instrument_ids: [])
+  end
+
+  def search_params
+    params.permit(:search, :channel_name, :name)
   end
 end

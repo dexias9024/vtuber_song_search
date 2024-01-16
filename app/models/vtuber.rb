@@ -7,11 +7,8 @@ class Vtuber < ApplicationRecord
   validates :channel_name, presence: true, uniqueness: true
   validates :channel_url, presence: true, uniqueness: true
 
-  def self.ransackable_associations(auth_object = nil)
-    %w[vtuber_instruments]
-  end
-
-  def self.ransackable_attributes(auth_object = nil)
-    %w[channel_name name]
-  end
+  scope :search_by_name_channel_name, ->(key_words) {
+    conditions = key_words.map { |word| "(channel_name ILIKE ? OR name ILIKE ?)" }.join(' AND ')
+    where(conditions, *Array.new(key_words.size * 2) { |i| "%#{key_words[i / 2]}%" })
+  }
 end

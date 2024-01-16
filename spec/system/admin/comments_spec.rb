@@ -62,7 +62,7 @@ RSpec.describe "Admin::Comments", type: :system do
 
       expect(page).to have_css('.btn-primary .fas.fa-search'), 'user検索用のボタンが表示されていることを確認してください'
 
-      find_field('q[content_cont]').set('test1')
+      find_field('search').set('test1')
       find('.btn-primary .fas.fa-search').click
 
       sleep 1

@@ -546,6 +546,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     sass: "npm:^1.69.4"
+    stimulus-autocomplete: "npm:^3.1.0"
   languageName: unknown
   linkType: soft
 
@@ -3473,6 +3474,15 @@ __metadata:
     static-eval: "npm:^2.0.5"
     through2: "npm:~2.0.3"
   checksum: fadfe810a014564c60ce69b5b4f4fb6c66375f13ae220c6f89f8f9e5449d23cfa972481cac390e79811b1f5c9e46ee82369dca0acc1f8cc6246ed8d5eb5f4a6b
+  languageName: node
+  linkType: hard
+
+"stimulus-autocomplete@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "stimulus-autocomplete@npm:3.1.0"
+  peerDependencies:
+    "@hotwired/stimulus": ^3.0.0
+  checksum: 6407256520a8f25063a36ed9f67f161b6296eac4780c908b310b9b417f7bf88cab5a4dbdb2ee98209058cd34bf38f27baa0618efe5a8bfd95071dd1d75ea97f1
   languageName: node
   linkType: hard
 

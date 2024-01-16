@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create destroy]
     collection do
       get :favorites
+      get :autocomplete
     end
   end
   resources :requests, only: %i[new create] do

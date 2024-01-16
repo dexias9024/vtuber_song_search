@@ -51,8 +51,8 @@ RSpec.describe 'Vtuber', type: :model do
       vtuber1 = create(:vtuber, channel_name: 'test1')
       vtuber2 = create(:vtuber, channel_name: 'test2')
 
-      search_params = { channel_name_or_name_cont: 'test1' }
-      results = Vtuber.ransack(search_params).result
+      search_params = ['test1']
+      results = Vtuber.search_by_name_channel_name(search_params)
 
       expect(results).to include(vtuber1)
       expect(results).not_to include(vtuber2)

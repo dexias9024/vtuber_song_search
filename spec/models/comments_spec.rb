@@ -25,8 +25,7 @@ RSpec.describe 'comment', type: :model do
       comment1 = create(:comment, content: 'test1')
       comment2 = create(:comment, content: 'test2')
 
-      search_params = { content_cont: 'test1' }
-      results = Comment.ransack(search_params).result
+      results = Comment.search_comments('test1')
 
       expect(results).to include(comment1)
       expect(results).not_to include(comment2)

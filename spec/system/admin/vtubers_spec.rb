@@ -246,7 +246,7 @@ RSpec.describe "Admin::Vtubers", type: :system do
 
       expect(page).to have_css('.btn-primary .fas.fa-search'), 'vtuber検索用のボタンが表示されていることを確認してください'
 
-      find_field('q[channel_name_or_name_cont]').set('test1')
+      find_field('search').set('test1')
       find('.btn-primary .fas.fa-search').click
 
       sleep 1
