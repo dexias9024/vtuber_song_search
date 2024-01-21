@@ -46,6 +46,12 @@ RSpec.describe 'User', type: :model do
       expect(user2.errors[:email]).to include("はすでに存在します")
     end
 
+    it '1-7.passwordの値が5文字以下の場合、無効である' do
+      user = FactoryBot.build(:user, password: 'a' * 5)
+      user.valid?
+      expect(user.errors[:password]).to include("は6文字以上で入力してください")
+    end
+
     it '1-7.nameの値が50文字以上の場合、無効である' do
       user = FactoryBot.build(:user, name: 'a' * 51)
       user.valid?

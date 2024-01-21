@@ -24,7 +24,8 @@ RSpec.describe "Comments", type: :system do
 
       expect(page).to have_button('投稿'), 'コメント投稿用のボタンが表示されていることを確認してください'
       
-
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       fill_in 'コメント', with: 'test'
       click_on '投稿'
 
@@ -35,7 +36,8 @@ RSpec.describe "Comments", type: :system do
       sleep 1
       visit song_path(@song)
 
-
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       fill_in 'コメント', with: nil
       click_on '投稿'
 
@@ -48,10 +50,14 @@ RSpec.describe "Comments", type: :system do
 
       visit song_path(@song)
 
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       fill_in 'コメント', with: 'test'
       click_on '投稿'
 
       within ".list-inline-item" do
+        page.execute_script("window.scrollBy(0, 500);")
+        sleep 1
         find('.js-delete-comment-button').click
       end
       

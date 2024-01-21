@@ -6,7 +6,7 @@ namespace :request_song do
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = ENV['YOUTUBE_API_KEY']
     
-    requests = Request.where(category: Request.categories['歌']).limit(20)
+    requests = Request.where(category: Request.categories['歌']).limit(100)
 
     requests.each do |request|
       song_id = youtube_id_from_url(request.url)

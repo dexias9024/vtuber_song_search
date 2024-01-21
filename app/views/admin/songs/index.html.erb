@@ -6,7 +6,7 @@
           <%= form_with(url: admin_songs_path, method: :get) do |f| %>
             <div class="mb-3">
               <div class="input-group-custom">
-                <%= f.text_field :search, class: 'form-control', data: { autocomplete_target: 'input' }, placeholder: t('defaults.search_word') %><br>
+                <%= f.text_field :search, class: 'form-control', value: params[:search], data: { autocomplete_target: 'input' }, placeholder: t('defaults.search_word') %><br>
                 <%= f.select :cover_eq, Song.covers.keys.map.with_index { |k, i| [k, i] }, { include_blank: '選択しない' }, class: 'form-search-select' %>
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-primary">

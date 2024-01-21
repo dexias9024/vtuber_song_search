@@ -13,9 +13,10 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, uniqueness: true, length: { maximum: 100 }, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, presence: true, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, presence: true, length: { minimum: 6 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :role, presence: true
   validates :profile, length: { maximum: 500 }
+  validates :reset_password_token, uniqueness: true, allow_nil: true
 
   def own?(object)
     id == object.user_id

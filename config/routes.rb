@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   namespace :admin do
     root to: 'dashboards#index'
     get 'login', to: 'user_sessions#new'
@@ -45,4 +47,6 @@ Rails.application.routes.draw do
   get '/about', to: 'guide#about'
   get '/terms', to: 'guide#terms'
   get '/privacy_policy', to: 'guide#privacy_policy'
+
+  resources :password_resets, only: %i[new create edit update]
 end

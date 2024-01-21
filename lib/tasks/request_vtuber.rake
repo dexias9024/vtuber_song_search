@@ -6,7 +6,7 @@ namespace :request_vtuber do
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = ENV['YOUTUBE_API_KEY']
     
-    requests = Request.where(category: Request.categories['Vtuber']).limit(5)
+    requests = Request.where(category: Request.categories['Vtuber']).limit(10)
 
     requests.each do |request|
       song_id = youtube_id_from_url(request.url)
@@ -14,6 +14,7 @@ namespace :request_vtuber do
       vtuber_id = video_info.channel_id
       vtuber_info = youtube.list_channels('snippet', id: vtuber_id).items.first
       match_name = video_info.channel_title
+      puts video_info
 
       if request.member_name.present?
         member = Member.find_by(name: request.member_name)

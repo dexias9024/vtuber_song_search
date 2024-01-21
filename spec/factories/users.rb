@@ -14,5 +14,16 @@ FactoryBot.define do
       sequence(:email) { |n| "general_#{n}@example.com" }
       role { :general }
     end
+
+    trait :guest do
+      sequence(:email) { |n| "guest_#{n}@example.com" }
+      role { :guest }
+    end
+
+    trait :old_guest do
+      sequence(:email) { |n| "old_guest_#{n}@example.com" }
+      role { :guest }
+      created_at { Time.zone.parse('2000-01-01') }
+    end
   end
 end

@@ -3,7 +3,7 @@
     <%= form_with model: comment, url: [song, comment], local: true do |f| %>
       <%= f.label :content %>
       <%= f.text_area :content, class: 'form-control mb-3', id: 'js-new-comment-content', rows: 4, placeholder: Comment.human_attribute_name(:content) %>
-      <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+      <%= f.submit t('defaults.post'), class: 'btn btn-primary', id: 'post_btn' %>
     <% end %>
   </div>
 </div>

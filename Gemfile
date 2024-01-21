@@ -37,6 +37,7 @@ gem 'sorcery'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'dotenv-rails'
+gem 'whenever', require: false
 
 gem 'sassc-rails'
 gem 'msgpack'
@@ -79,7 +80,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
+  gem 'letter_opener_web'
 end
 
 group :test do

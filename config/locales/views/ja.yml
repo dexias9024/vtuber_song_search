@@ -14,6 +14,7 @@ ja:
     song_register: '曲登録'
     member_register: '所属登録'
     search_word: '検索ワードを入力してください'
+    password_reset: 'パスワードリセット'
 
 
     message:
@@ -116,6 +117,18 @@ ja:
   inquiries:
     new:
       title: 'お問合せフォーム'
+
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+      submit: '送信'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
 
   admin:
     sidebar:
