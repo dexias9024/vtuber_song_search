@@ -6,7 +6,7 @@ namespace :request_vtuber do
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = ENV['YOUTUBE_API_KEY']
     
-    requests = Request.where(category: Request.categories['Vtuber']).limit(5)
+    requests = Request.where(category: Request.categories['Vtuber']).limit(20)
 
     requests.each do |request|
       song_id = youtube_id_from_url(request.url)
@@ -127,7 +127,9 @@ def match_vtuber(vtuber_name)
 end
 
 def cover_or_original(title)
-  if title.downcase.include?('オリジナル曲') || title.downcase.include?('original song') || title.downcase.include?('official')
+  if title.downcase.include?('official髭男dism')
+    'cover'
+  elsif title.downcase.include?('オリジナル曲') || title.downcase.include?('original song') || title.downcase.include?('official')
     'original'
   else
     'cover'

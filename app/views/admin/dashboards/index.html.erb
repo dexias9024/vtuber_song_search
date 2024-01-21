@@ -21,6 +21,9 @@
               <%= render partial: 'admin/dashboards/request', collection: @song_requests %>
             </tbody>
           </table>
+          <div class="item__paginate">
+            <%= paginate @song_requests %>
+          </div>
         </div>
       </div>
     </div>

@@ -7,9 +7,10 @@ class Admin::UsersController < Admin::BaseController
       hiragana = search_params[:search].tr('ァ-ン', 'ぁ-ん')
       katakana = search_params[:search].tr('ぁ-ん', 'ァ-ン')
 
+      search_users = User.search_by_name(search_params[:search]).order(created_at: :desc)
       hiragana_users = User.search_by_name(hiragana).order(created_at: :desc)
       katakana_users = User.search_by_name(katakana).order(created_at: :desc)
-      result_users = (hiragana_users + katakana_users).uniq
+      result_users = (search_users + hiragana_users + katakana_users).uniq
       @users = Kaminari.paginate_array(result_users).page(params[:page]).per(20)
     else
       @users = User.all.order(created_at: :desc).page(params[:page])

@@ -27,6 +27,8 @@ RSpec.describe "Inquiries", type: :system do
 
       expect(page).to have_button('登録'), 'お問合せ作成用のボタンが表示されていることを確認してください'
 
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       fill_in '名前(必須)', with: 'test01'
       fill_in 'メールアドレス(必須)', with: 'test@example.com'
       fill_in 'お問合せ内容', with: 'test'
@@ -50,6 +52,8 @@ RSpec.describe "Inquiries", type: :system do
 
       expect(page).to have_button('登録'), 'お問合せ作成用のボタンが表示されていることを確認してください'
 
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       expect {
         fill_in '名前(必須)', with: nil
         fill_in 'メールアドレス(必須)', with: 'test@example.com'
@@ -75,6 +79,8 @@ RSpec.describe "Inquiries", type: :system do
 
       expect(page).to have_button('登録'), 'お問合せ作成用のボタンが表示されていることを確認してください'
 
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       expect {
         fill_in '名前(必須)', with: 'test'
         fill_in 'メールアドレス(必須)', with: 'test@example.com'

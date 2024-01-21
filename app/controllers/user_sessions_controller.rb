@@ -7,20 +7,20 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
     if @user&.admin?
       logout
-      flash.now[:danger] = "ログインに失敗しました."
+      flash.now[:danger] = t('.fail')
       render :new, status: :unprocessable_entity
     elsif @user
-      flash[:success] = "ログインしました。"
+      flash[:success] = t('.success')
       redirect_to songs_path
     else
-      flash.now[:danger] = "ログインに失敗しました."
+      flash.now[:danger] = t('.fail')
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    flash[:success] = "ログアウトしました。"
+    flash[:success] = t('.success')
     redirect_to login_path
   end
 
@@ -33,7 +33,7 @@ class UserSessionsController < ApplicationController
     role: 'guest'
     )
     auto_login(@guest_user)
-    flash[:success] = "ゲストとしてログインしました。"
+    flash[:success] = t('.success')
     redirect_to songs_path
   end
 end

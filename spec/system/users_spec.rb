@@ -123,6 +123,8 @@ RSpec.describe "Users", type: :system do
       attach_file('アイコン', file_path)
       fill_in 'プロフィール', with: 'Change Profile'
 
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       click_button '更新'
 
       expect(page).to have_text('ユーザー情報が正常に更新されました。'), 'ユーザー情報を更新したメッセージが表示されていることを確認してください'

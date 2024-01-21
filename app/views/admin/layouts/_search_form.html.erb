@@ -1,7 +1,7 @@
 <%= form_with url: url, method: :get do |f| %>
   <div class="mb-3">
     <div class="input-group-custom">
-      <%= f.text_field :search, class: 'form-control', data: { autocomplete_target: 'input' }, placeholder: t('defaults.search_word') %>
+      <%= f.text_field :search, class: 'form-control', value: params[:search], data: { autocomplete_target: 'input' }, placeholder: t('defaults.search_word') %>
       <div class="input-group-append">
         <button type="submit" class="btn btn-primary">
           <i class="fas fa-search"></i>

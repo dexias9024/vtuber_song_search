@@ -28,6 +28,8 @@ RSpec.describe "Requests", type: :system do
       expect(page).to have_css("label[for='request_name']"), '名前(必須) というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='request_url']"), '動画のURL(必須) というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='request_member_name']"), '所属 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       click_on '楽器一覧'
       expect(page).to have_unchecked_field('test'), '演奏楽器 ラベルのチェックボックスの選択肢があることを確認してください'
 
@@ -85,6 +87,8 @@ RSpec.describe "Requests", type: :system do
       expect(page).to have_css("label[for='request_name']"), '名前(必須) というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='request_url']"), '動画のURL(必須) というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='request_member_name']"), '所属 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       click_on '楽器一覧'
       expect(page).to have_unchecked_field('test'), '演奏楽器 ラベルのチェックボックスの選択肢があることを確認してください'
 
@@ -118,6 +122,8 @@ RSpec.describe "Requests", type: :system do
       expect(page).to have_css("label[for='request_name']"), '名前(必須) というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='request_url']"), '動画のURL(必須) というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='request_member_name']"), '所属 というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      page.execute_script("window.scrollBy(0, 500);")
+      sleep 1
       click_on '楽器一覧'
       expect(page).to have_unchecked_field('test'), '演奏楽器 ラベルのチェックボックスの選択肢があることを確認してください'
 

@@ -80,11 +80,20 @@ ja:
       fail: 'ユーザーの作成に失敗しました。'
 
   user_sessions:
-      create:
-        success: "ログインに成功しました。"
-        fail: "ログインに失敗しました。"
-      destroy:
-        success: "ログアウトしました。"
+    create:
+      success: "ログインしました。"
+      fail: "ログインに失敗しました。"
+    destroy:
+      success: "ログアウトしました。"
+    guest_login:
+      success: "ゲストとしてログインしました"
+
+  password_resets:
+    create:
+      success: "パスワードリセットのメールを送信しました。"
+    update:
+      success: "パスワードがリセットされました。"
+      fail: "パスワードの更新に失敗しました。"
 
   comments:
     create:
@@ -109,6 +118,11 @@ ja:
     create:
       success: 'お問合せを投稿しました。'
       fail: 'お問合せの投稿に失敗しました。'
+
+  password_resets:
+    edit:
+      not_authenticated: "ユーザーが見つかりませんでした。"
+
 
   admin:
     users:
