@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
-
   namespace :admin do
     root to: 'dashboards#index'
     get 'login', to: 'user_sessions#new'
