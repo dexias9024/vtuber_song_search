@@ -1,24 +1,17 @@
-
-
 <footer class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-sm-2 col-12">
-        <div class="text-start lh-base left-link">
-          <%= link_to t('footer.request'), new_request_path, method: :get %>
-        </div>
+      <div class="col-sm-3 col-12">
+        <%= link_to t('defaults.about'), about_path %>
       </div>
-      <div class="col-sm-2 col-12 text-end right-links">
-        <%= link_to t('footer.about'), about_path %>
+      <div class="col-sm-3 col-12">
+        <%= link_to t('defaults.terms'), terms_path %>
       </div>
-      <div class="col-sm-2 col-12 text-end right-links">
-        <%= link_to t('footer.terms'), terms_path %>
+      <div class="col-sm-3 col-12">
+        <%= link_to t('defaults.privacy_policy'), privacy_policy_path %>
       </div>
-      <div class="col-sm-2 col-12 text-end right-links">
-        <%= link_to t('footer.privacy_policy'), privacy_policy_path %>
-      </div>
-      <div class="col-sm-2 col-12 text-end right-links">
-        <%= link_to t('footer.inquiry'), new_inquiry_path %>
+      <div class="col-sm-3 col-12">
+        <%= link_to t('defaults.inquiry'), new_inquiry_path %>
       </div>
       <div class="copyright">
           

@@ -33,6 +33,20 @@ class RequestsController < ApplicationController
     end
   end
 
+  def autocomplete
+    hiragana = params[:q].tr('ァ-ン', 'ぁ-ん')
+    katakana = params[:q].tr('ぁ-ん', 'ァ-ン')
+
+    search_names = Member.search_by_name(params[:q]).pluck(:name).flatten.uniq
+    hiragana_names = Member.search_by_name(hiragana).pluck(:name).flatten.uniq
+    katakana_names = Member.search_by_name(katakana).pluck(:name).flatten.uniq
+    @results = (search_names + hiragana_names + katakana_names).uniq.take(20)
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def request_params

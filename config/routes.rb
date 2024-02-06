@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     collection do
       post 'vtuber_form'
       post 'song_form'
+      get :autocomplete
     end
   end
   
