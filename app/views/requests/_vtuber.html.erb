@@ -1,7 +1,7 @@
 <turbo-frame id="request_form">
   <%= render 'layouts/flash_messages' %>
   <%= render 'layouts/error_messages', object: @request %>
-  <h1><%= t('.title') %></h1>
+  <h1 class="app-title"><%= t('.title') %></h1>
   <%= button_to t('.change_request'), song_form_requests_path, remote: true, data: { turbo_frame: "request_form" }, class: 'btn btn-primary' %>
   <%= form_with model: @request, local: true do |f| %>
     <div class="form-group">
@@ -16,9 +16,12 @@
       <%= f.label :url %>
       <%= f.text_field :url, class: 'form-control' %>
     </div>
-    <div class="form-group">
-      <%= f.label :member_name %>
-      <%= f.text_field :member_name, class: 'form-control' %>
+    <div class="mb-3" data-controller="autocomplete" data-autocomplete-url-value="/requests/autocomplete" role="combobox">
+      <div class="form-group">
+        <%= f.label :member_name %>
+        <%= f.text_field :member_name, class: 'form-control', value: params[:member_name], data: { autocomplete_target: 'input' } %>
+      </div>
+      <ul class="list-group" data-autocomplete-target="results"></ul>
     </div>
     <div class="form-group">
       <%= f.label :instrument_ids, class: "control-label" %><br>

@@ -16,6 +16,9 @@ class SongsController < ApplicationController
         katakana_songs = Song.search_by_title_name_artist(katakana).order(created_at: :desc)
         result_songs = (search_songs + hiragana_songs + katakana_songs).uniq
       end
+      artist_name_matches = result_songs.select { |song| key_words.any? { |kw| song.artist_name =~ /#{Regexp.escape(kw)}/i } }
+      result_songs = (artist_name_matches + result_songs).uniq
+
       @songs = Kaminari.paginate_array(result_songs).page(params[:page]).per(20)
 
     else
@@ -52,6 +55,8 @@ class SongsController < ApplicationController
         katakana_songs = Song.where(id: song_ids).search_by_title_name_artist(katakana).order(created_at: :desc)
         result_songs = (search_songs + hiragana_songs + katakana_songs).uniq
       end
+      artist_name_matches = result_songs.select { |song| key_words.any? { |kw| song.artist_name =~ /#{Regexp.escape(kw)}/i } }
+      result_songs = (artist_name_matches + result_songs).uniq
       @favorites = Kaminari.paginate_array(result_songs).page(params[:page]).per(20)
       
     else

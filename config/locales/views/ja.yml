@@ -15,7 +15,11 @@ ja:
     member_register: '所属登録'
     search_word: '検索ワードを入力してください'
     password_reset: 'パスワードリセット'
-
+    request: 'Vtuber・曲リクエスト'
+    about: 'このアプリについて'
+    terms: '利用規約'
+    privacy_policy: 'プライバシーポリシー'
+    inquiry: 'お問合せ'
 
     message:
       require_login: 'ログインが必要です'
@@ -25,13 +29,6 @@ ja:
       fovirites: 'お気に入りに登録しました'
       not_fovirites: 'お気に入りから外しました'
       close_confirm: '解決済みにしますか？'
-
-  footer:
-    request: 'Vtuber・曲リクエスト'
-    about: 'このアプリについて'
-    terms: '利用規約'
-    privacy_policy: 'プライバシーポリシー'
-    inquiry: 'お問合せ'
 
   users:
     show:
@@ -67,7 +64,7 @@ ja:
       video_title: '動画名'
       thumbnail: 'サムネイル'
       artist_name: '歌唱Vtuber'
-      cover: 'カバーかオリジナルか'
+      cover: '分類'
       no_songs_message: '登録された曲はありません。'
       
     index:
@@ -86,14 +83,14 @@ ja:
       video_title: '動画名'
       thumbnail: 'サムネイル'
       artist_name: '歌唱Vtuber'
-      cover: 'カバーかオリジナルか'
+      cover: '分類'
       no_songs_message: '登録された曲はありません。'
     show:
       video_title: '動画名'
       video_url: 'URL'
       artist_name: '歌唱Vtuber'
       channel_name: 'チャンネル名'
-      cover: 'カバーかオリジナルか'
+      cover: '分類'
       comments: 'コメント欄'
       no_comment: 'コメントはありません'
 
@@ -102,7 +99,7 @@ ja:
       video_title: '動画名'
       thumbnail: 'サムネイル'
       artist_name: '歌唱Vtuber'
-      cover: 'カバーかオリジナルか'
+      cover: '分類'
       no_songs_message: '登録された曲はありません。'
 
   requests:
@@ -221,7 +218,7 @@ ja:
         name: '原曲名'
         artist_name: '歌唱Vtuber'
         vtuber: 'チャンネル主'
-        cover: 'カバーかオリジナルか'
+        cover: '分類'
         created_at: '作成時期'
       new:
         title: '曲作成'

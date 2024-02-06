@@ -31,7 +31,7 @@ class UserSessionsController < ApplicationController
     password: 'password',
     password_confirmation: 'password',
     role: 'guest'
-    )
+  )
     auto_login(@guest_user)
     flash[:success] = t('.success')
     redirect_to songs_path
