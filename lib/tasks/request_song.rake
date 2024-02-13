@@ -1,5 +1,6 @@
 require 'google/apis/youtube_v3'
-
+require_relative '../../lib/tasks/request_helper'
+using RequestHelper
 
 namespace :request_song do
   desc 'Request song'

@@ -1,9 +1,35 @@
+#pagecover {
+  position: relative;
+  min-height: 100%;
+}
+
+#contents {
+  padding-bottom: 4em;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+#header h1,#header p,#footer p {
+  margin: 0px;
+  padding: 0px 10px;
+}
+
+html,body{
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
 .footer {
   background-color: #696b7d;
   color: #fff;
   padding: 20px 0;
   position: fixed;
-  bottom: 0;
+  position: relative;
   width: 100%;
 }
 
@@ -108,11 +134,11 @@
 }
 
 .guide_image{
-  width: 800px;
-  height: 400px;
+  width: 100%;
+  height: auto; 
 }
 
 .header_image{
-  width: 800px;
-  height: 100px;
+  width: 100%;
+  height: auto; 
 }
