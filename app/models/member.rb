@@ -13,7 +13,7 @@ class Member < ApplicationRecord
     self.id == Member.order(:id).first&.id
   end
 
-  scope :search_by_name, ->(key_words) {
+  scope :search_by_name, lambda { |key_words|
     where("LOWER(name) LIKE :q", q: "#{key_words.downcase}%")
   }
 end
