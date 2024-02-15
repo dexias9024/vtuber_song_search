@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.day do
+every 1.day, at: '4:30 am' do
   rake "request_vtuber", :environment => 'production'
   rake "request_song", :environment => 'production'
   rake "guest_destroy", :environment => 'production'

@@ -3,8 +3,8 @@ ja:
     pagination:
       first: "&laquo;"
       last: "&raquo;"
-      previous: "&lsaquo; 前"
-      next: "次 &rsaquo;"
+      previous: "前"
+      next: "次"
       truncate: "..."
 
   activerecord:
