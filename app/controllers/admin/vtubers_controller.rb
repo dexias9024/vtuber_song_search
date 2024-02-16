@@ -1,4 +1,5 @@
 class Admin::VtubersController < Admin::BaseController
+  include Admin::VtubersHelper
   before_action :set_vtuber, only: %i[show edit update destroy]
   before_action :set_members, only: %i[new edit]
   before_action :set_instruments, only: %i[new edit]
@@ -19,19 +20,11 @@ class Admin::VtubersController < Admin::BaseController
   end
 
   def index
-    if search_params[:search].present?
-      key_words = search_params[:search].split(/[\p{blank}\s]+/)
-      hiragana = key_words.map { |word| word.tr('ァ-ン', 'ぁ-ん') }
-      katakana = key_words.map { |word| word.tr('ぁ-ん', 'ァ-ン') }
-
-      search_vtubers = Vtuber.search_by_name_channel_name(key_words).order(created_at: :desc)
-      hiragana_vtubers = Vtuber.search_by_name_channel_name(hiragana).order(created_at: :desc)
-      katakana_vtubers = Vtuber.search_by_name_channel_name(katakana).order(created_at: :desc)
-      result_vtubers = (search_vtubers + hiragana_vtubers + katakana_vtubers).uniq
-      @vtubers = Kaminari.paginate_array(result_vtubers).page(params[:page]).per(20)
-    else
-      @vtubers = Vtuber.all.order(created_at: :desc).page(params[:page])
-    end
+    @vtubers = if search_params[:search].present?
+                 search_vtubers(search_params[:search])
+               else
+                 Vtuber.all.order(created_at: :desc).page(params[:page])
+               end
   end
 
   def show; end

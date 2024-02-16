@@ -27,6 +27,7 @@ Member.create_or_find_by(name: '神椿')
 Member.create_or_find_by(name: 'ライブユニオン')
 Member.create_or_find_by(name: 'ReAcT')
 Member.create_or_find_by(name: 'RIOT MUSIC')
+Member.create_or_find_by(name: 'ReGLOSS')
 
 #instruments
 Instrument.create_or_find_by(name: 'ギター')

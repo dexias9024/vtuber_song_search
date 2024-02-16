@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  include RequestsHelper
   before_action :set_instruments, only: %i[new]
   def new
     @request = Request.new
@@ -7,11 +8,13 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.user_id = current_user.id
-    respond_to do |format|
+    respond_to do |_format|
       if @request.save
-        format.html { redirect_to new_request_path, success: t('.success') }
+        respond_to(&:html)
+        redirect_to new_request_path, success: t('.success')
       else
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('request_form', partial: 'requests/vtuber', locals: { request: @request }), status: :unprocessable_entity }
+        respond_to(&:turbo_stream)
+        render turbo_stream: turbo_stream.replace('request_form', partial: 'requests/vtuber', locals: { request: @request }), status: :unprocessable_entity
       end
     end
   end
@@ -19,32 +22,20 @@ class RequestsController < ApplicationController
   def vtuber_form
     @request = Request.new
     puts @request.inspect
-    respond_to do |format|
-      format.html { render 'requests/vtuber' }
-      format.turbo_stream { render turbo_stream: turbo_stream.update('request_form', partial: 'requests/vtuber', locals: { request: @request }) }
-    end
+    respond_to(&:turbo_stream) 
+    render turbo_stream: turbo_stream.update('request_form', partial: 'requests/vtuber', locals: { request: @request }), status: :unprocessable_entity
   end
 
   def song_form
     @request = Request.new
-    respond_to do |format|
-      format.html { render 'requests/song' }
-      format.turbo_stream { render turbo_stream: turbo_stream.update('request_form', partial: 'requests/song', locals: { request: @request }) }
-    end
+    respond_to(&:turbo_stream) 
+    render turbo_stream: turbo_stream.update('request_form', partial: 'requests/song', locals: { request: @request }), status: :unprocessable_entity
   end
 
   def autocomplete
-    hiragana = params[:q].tr('ァ-ン', 'ぁ-ん')
-    katakana = params[:q].tr('ぁ-ん', 'ァ-ン')
+    @results = search_autocomplete(params[:q])
 
-    search_names = Member.search_by_name(params[:q]).pluck(:name).flatten.uniq
-    hiragana_names = Member.search_by_name(hiragana).pluck(:name).flatten.uniq
-    katakana_names = Member.search_by_name(katakana).pluck(:name).flatten.uniq
-    @results = (search_names + hiragana_names + katakana_names).uniq.take(20)
-
-    respond_to do |format|
-      format.js
-    end
+    respond_to(&:js)
   end
 
   private
