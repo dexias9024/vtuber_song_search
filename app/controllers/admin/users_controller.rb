@@ -1,20 +1,14 @@
 class Admin::UsersController < Admin::BaseController
+  include Admin::UsersHelper
   before_action :set_user, only: %i[show edit update destroy]
   before_action :check_owner, only: %i[show edit update destroy]
   
   def index
-    if search_params[:search].present?
-      hiragana = search_params[:search].tr('ァ-ン', 'ぁ-ん')
-      katakana = search_params[:search].tr('ぁ-ん', 'ァ-ン')
-
-      search_users = User.search_by_name(search_params[:search]).order(created_at: :desc)
-      hiragana_users = User.search_by_name(hiragana).order(created_at: :desc)
-      katakana_users = User.search_by_name(katakana).order(created_at: :desc)
-      result_users = (search_users + hiragana_users + katakana_users).uniq
-      @users = Kaminari.paginate_array(result_users).page(params[:page]).per(20)
-    else
-      @users = User.all.order(created_at: :desc).page(params[:page])
-    end
+    @users = if search_params[:search].present?
+               search_users(search_params[:search])
+             else
+               User.all.order(created_at: :desc).page(params[:page])
+             end
   end
 
   def show; end
