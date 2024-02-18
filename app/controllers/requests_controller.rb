@@ -8,14 +8,12 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.user_id = current_user.id
-    respond_to do |_format|
-      if @request.save
-        respond_to(&:html)
-        redirect_to new_request_path, success: t('.success')
-      else
-        respond_to(&:turbo_stream)
-        render turbo_stream: turbo_stream.replace('request_form', partial: 'requests/vtuber', locals: { request: @request }), status: :unprocessable_entity
-      end
+    if @request.save
+      respond_to(&:html)
+      redirect_to new_request_path, success: t('.success')
+    else
+      respond_to(&:turbo_stream)
+      render turbo_stream: turbo_stream.replace('request_form', partial: 'requests/vtuber', locals: { request: @request }), status: :unprocessable_entity
     end
   end
 

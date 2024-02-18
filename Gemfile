@@ -42,6 +42,7 @@ gem 'whenever', require: false
 gem 'sassc-rails'
 gem 'msgpack'
 
+gem 'sitemap_generator'
 gem 'google-apis-youtube_v3'
 
 

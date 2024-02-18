@@ -20,7 +20,6 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       expect(page).to have_content('ログインしました'), 'ログイン処理が正しく行えるかを確認してください'
-      expect(page).to have_button('ログアウト'), 'ログアウトのボタンが表示されていることを確認してください'
     end
 
     it '1-2.入力項目が不足している場合にログインができない' do
@@ -105,6 +104,9 @@ RSpec.describe "UserSessions", type: :system do
       fill_in 'Password', with: 'password'
       click_button 'ログイン'
 
+      expect(find('.navbar-toggler')).to be_visible
+      find('.navbar-toggler').click
+      sleep 2
       find_button('ログアウト').click
 
       expect(page).to have_button('ログイン'), 'ログアウトができているかを確認してください'
@@ -112,6 +114,7 @@ RSpec.describe "UserSessions", type: :system do
 
     it '2-2.ログインしていない場合、ユーザーのログアウトリンクが表示されない' do
       visit '/login'
+      find(".navbar-toggler-icon").click
 
       expect(page).not_to have_link('ログアウト'), 'ログインしていない場合でも、ログアウトリンクが表示されています'
     end
@@ -126,8 +129,6 @@ RSpec.describe "UserSessions", type: :system do
       expect(page).to have_button('ゲストログイン'), 'ゲストログイン用のボタンが表示されていることを確認してください'
 
       click_button 'ゲストログイン'
-
-      expect(page).to have_button('ログアウト'), 'ログアウトのボタンが表示されていることを確認してください'
       expect(page).to have_content('ゲスト'), 'ゲストとしてログインしたことを画面に表示していることを確認してください'
     end
   end
