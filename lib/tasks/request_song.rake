@@ -35,7 +35,7 @@ namespace :request_song do
       Song.create!(
             title: video_info.title,
             cover: cover_or_original(video_info.title),
-            name: shorts_name?(video.snippet.title, song_names),
+            name: shorts_name?(video_info.title, song_names),
             artist_name: title_shorts?(artist, vtuber),
             vtuber_id: match_vtuber(match_name),
             video_url: "https://www.youtube.com/watch?v=#{song_id}"
